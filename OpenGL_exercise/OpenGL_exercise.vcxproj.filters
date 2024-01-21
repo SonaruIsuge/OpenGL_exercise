@@ -16,6 +16,9 @@
     <Filter Include="來源檔案\Shader">
       <UniqueIdentifier>{31cc82cb-bb73-4944-848a-744bc92ac251}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\Images">
+      <UniqueIdentifier>{b65fd822-d407-42b6-a7ad-a7d6c8a31bf8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp">
@@ -37,5 +40,10 @@
     <None Include="..\Shader\vertex.vs">
       <Filter>來源檔案\Shader</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Images\container.jpg">
+      <Filter>來源檔案\Images</Filter>
+    </Image>
   </ItemGroup>
 </Project>
