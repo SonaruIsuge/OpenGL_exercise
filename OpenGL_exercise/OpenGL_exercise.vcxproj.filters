@@ -13,15 +13,29 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="來源檔案\Shader">
+      <UniqueIdentifier>{31cc82cb-bb73-4944-848a-744bc92ac251}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="vertices.glsl">
+    <ClInclude Include="Shader.h">
       <Filter>來源檔案</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Shader\fragment.frag">
+      <Filter>來源檔案\Shader</Filter>
+    </None>
+    <None Include="..\Shader\vertex.vs">
+      <Filter>來源檔案\Shader</Filter>
     </None>
   </ItemGroup>
 </Project>
