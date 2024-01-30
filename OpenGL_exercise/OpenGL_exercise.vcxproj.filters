@@ -45,5 +45,8 @@
     <Image Include="..\Images\container.jpg">
       <Filter>來源檔案\Images</Filter>
     </Image>
+    <Image Include="..\Images\awesomeface.png">
+      <Filter>來源檔案\Images</Filter>
+    </Image>
   </ItemGroup>
 </Project>

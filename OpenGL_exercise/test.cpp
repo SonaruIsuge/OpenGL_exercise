@@ -4,9 +4,13 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <SOIL2/SOIL2.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include "Shader.h"
 
 using namespace std;
+using namespace glm;
 
 
 // Window dimensions
@@ -138,11 +142,6 @@ int main()
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glBindTexture(GL_TEXTURE_2D, texture1);
-
-		// Draw triangle
-		shader.Use();
-
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture1);
 		glUniform1i(glGetUniformLocation(shader.Program, "ourTexture1"), 0);
@@ -151,6 +150,15 @@ int main()
 		glBindTexture(GL_TEXTURE_2D, texture2);
 		glUniform1i(glGetUniformLocation(shader.Program, "ourTexture2"), 1);
 
+		// Draw triangle
+		shader.Use();
+
+		mat4 trans = mat4(1.0f);
+		trans = rotate(trans, (GLfloat)glfwGetTime() * radians(30.0f), vec3(0.0f, 0.0f, 1.0f));
+		trans = scale(trans, vec3(0.5f, 0.5f, 0.5f));
+
+		GLuint transformLoc = glGetUniformLocation(shader.Program, "transform");
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, value_ptr(trans));
 
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
