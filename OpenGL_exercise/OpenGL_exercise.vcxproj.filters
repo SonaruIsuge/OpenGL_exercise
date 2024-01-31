@@ -19,6 +19,9 @@
     <Filter Include="來源檔案\Images">
       <UniqueIdentifier>{b65fd822-d407-42b6-a7ad-a7d6c8a31bf8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\Components">
+      <UniqueIdentifier>{69795eb2-2099-4a35-b2a8-ca61abb08b35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp">
@@ -34,19 +37,19 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shader\fragment.frag">
-      <Filter>來源檔案\Shader</Filter>
-    </None>
-    <None Include="..\Shader\vertex.vs">
-      <Filter>來源檔案\Shader</Filter>
-    </None>
+    <Image Include="Images\awesomeface.png">
+      <Filter>來源檔案\Images</Filter>
+    </Image>
+    <Image Include="Images\container.jpg">
+      <Filter>來源檔案\Images</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Images\container.jpg">
-      <Filter>來源檔案\Images</Filter>
-    </Image>
-    <Image Include="..\Images\awesomeface.png">
-      <Filter>來源檔案\Images</Filter>
-    </Image>
+    <None Include="Shader\fragment.frag">
+      <Filter>來源檔案\Shader</Filter>
+    </None>
+    <None Include="Shader\vertex.vs">
+      <Filter>來源檔案\Shader</Filter>
+    </None>
   </ItemGroup>
 </Project>
