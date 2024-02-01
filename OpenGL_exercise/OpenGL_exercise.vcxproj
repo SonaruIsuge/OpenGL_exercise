@@ -133,10 +133,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Shape.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="Shape.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\awesomeface.png" />
@@ -144,6 +146,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\fragment.frag" />
+    <None Include="Shader\Simple2D.frag" />
+    <None Include="Shader\Simple2D.vs" />
     <None Include="Shader\vertex.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

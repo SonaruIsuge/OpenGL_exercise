@@ -30,10 +30,16 @@
     <ClCompile Include="Shader.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>來源檔案\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
       <Filter>來源檔案</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>來源檔案\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +55,12 @@
       <Filter>來源檔案\Shader</Filter>
     </None>
     <None Include="Shader\vertex.vs">
+      <Filter>來源檔案\Shader</Filter>
+    </None>
+    <None Include="Shader\Simple2D.vs">
+      <Filter>來源檔案\Shader</Filter>
+    </None>
+    <None Include="Shader\Simple2D.frag">
       <Filter>來源檔案\Shader</Filter>
     </None>
   </ItemGroup>
