@@ -7,7 +7,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
 #include "Shader.h"
+#include "Components/Camera.h"
 
 using namespace std;
 using namespace glm;
@@ -16,9 +18,35 @@ using namespace glm;
 // Window dimensions
 const GLuint WIDTH = 800, HEIGHT = 600;
 
+bool firstMouse = true;
+
+// Time
+float lastTime = 0.0f;
+float deltaTime = 0.0f;
+
+// Camera
+Camera* camera = new Camera(vec3(0.0f, 0.0f, 3.0f));
+
+// detect key press
+bool keys[1024];
+
+// Mouse position
+vec2 lastMousePos = vec2(WIDTH / 2, HEIGHT / 2);
+vec2 mouseOffset = vec2(0);
+
+// matrix for calculation
+mat4 view = mat4(1);
+mat4 model = mat4(1);
+mat4 modelView = mat4(1);
+mat4 projection = mat4(1);
+
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
+void mouse_callback(GLFWwindow* window, double xPos, double yPos);
+void scroll_callback(GLFWwindow* window, double xOffset, double yOffset);
 
+void UpdateDeltaTime();
+void moveCamera();
 
 int main()
 {
@@ -99,6 +127,10 @@ int main()
 
 	// Set the required callback functions
 	glfwSetKeyCallback(window, key_callback);
+	glfwSetCursorPosCallback(window, mouse_callback);
+	glfwSetScrollCallback(window, scroll_callback);
+
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	// Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
 	glewExperimental = GL_TRUE;
@@ -183,8 +215,9 @@ int main()
 
 	// Game loop
 	while (!glfwWindowShouldClose(window)) {
-		// Check events (key pressed, mouse move ect.) and call corresponding respose functions
 		glfwPollEvents();
+		UpdateDeltaTime();
+		moveCamera();
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -200,35 +233,27 @@ int main()
 		// Draw triangle
 		shader.Use();
 
-		//mat4 model = mat4(1.0f);
-		mat4 view = mat4(1.0f);
-		mat4 projection = mat4(1.0f);
-		//model = rotate(model, (GLfloat)glfwGetTime() * radians(50.0f), vec3(0.5f, 1.0f, 0.0f));
-		view = translate(view, vec3(0.0f, 0.0f, -3.0f));
-		projection = perspective(radians(45.0f), (GLfloat)WIDTH / (GLfloat)HEIGHT, 0.1f, 100.0f);
-
-		mat4 modelView = mat4(1.0f);
+		view = camera->GetViewMatrix();
+		projection = perspective(radians(camera->FOV), (GLfloat)WIDTH / (GLfloat)HEIGHT, 0.1f, 100.0f);
 
 		GLint modelViewLoc = glGetUniformLocation(shader.Program, "modelView");
 		GLint projLoc = glGetUniformLocation(shader.Program, "projection");
 
-		//glUniformMatrix4fv(modelViewLoc, 1, GL_FALSE, value_ptr(modelView));
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, value_ptr(projection));
 
 		glBindVertexArray(VAO);
 
 		for (GLint i = 0; i < 10; i++) {
-			mat4 model = mat4(1.0f);
+
+			model = mat4(1.0f);
 			model = translate(model, cubePositions[i]);
 			GLfloat angle = 20.0f * i;
 			model = rotate(model, angle, vec3(1.0f, 0.3f, 0.5f));
-			mat4 modelView = view * model;
+			modelView = view * model;
 			glUniformMatrix4fv(modelViewLoc, 1, GL_FALSE, value_ptr(modelView));
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
 
-
-		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 
 		// Swap the screen buffers (Double buffers)
@@ -248,5 +273,57 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, GL_TRUE);
+	}
+
+	if (key >= 0 && key < 1024)
+	{
+		if (action == GLFW_PRESS)
+			keys[key] = true;
+		else if (action == GLFW_RELEASE)
+			keys[key] = false;
+	}
+}
+
+
+void mouse_callback(GLFWwindow* window, double xPos, double yPos) {
+	if (firstMouse) {
+		lastMousePos = vec2(xPos, yPos);
+		firstMouse = false;
+	}
+
+	mouseOffset = vec2(xPos - lastMousePos.x, lastMousePos.y - yPos);
+	lastMousePos = vec2(xPos, yPos);
+
+	camera->RotateCamera(mouseOffset.x, mouseOffset.y, deltaTime);
+}
+
+
+void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
+	camera->ChangeCameraFOV(yOffset);
+}
+
+
+void UpdateDeltaTime() {
+	float currentFrame = glfwGetTime();
+	deltaTime = currentFrame - lastTime;
+	lastTime = currentFrame;
+}
+
+
+void moveCamera() {
+	// Movement
+	
+	
+	if (keys[GLFW_KEY_W]) {
+		camera->MoveCamera(FRONT, deltaTime);
+	}
+	if (keys[GLFW_KEY_S]) {
+		camera->MoveCamera(BACK, deltaTime);
+	}
+	if (keys[GLFW_KEY_A]) {
+		camera->MoveCamera(LEFT, deltaTime);
+	}
+	if (keys[GLFW_KEY_D]) {
+		camera->MoveCamera(RIGHT, deltaTime);
 	}
 }
