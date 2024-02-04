@@ -1,9 +1,10 @@
 #pragma once
 
 #include <glm/glm.hpp>
-#include "Shader.h"
-#include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include "../Shader.h"
+
 
 using namespace glm;
 
@@ -38,8 +39,10 @@ public:
 	vec3 rotation;
 	vec3 scale;
 
+	Shape* parent;
 
-	Shape();
+
+	Shape(Shape* parent = nullptr);
 	virtual ~Shape();
 
 	void Init(vec4 vColor, mat4 view, mat4 projection);
@@ -49,5 +52,5 @@ public:
 	void SetSingleColor(vec4 color);
 	void SetViewMatrix(mat4& viewMat);
 	void SetProjectionMatrix(mat4& projMat);
-
+	vec3 GetWorldPosition();
 };

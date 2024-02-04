@@ -132,13 +132,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Components\Shape.cpp" />
     <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="Shapes\Cube.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Components\Shape.h" />
+    <ClInclude Include="Debug.h" />
     <ClInclude Include="Shader.h" />
-    <ClInclude Include="Shape.h" />
+    <ClInclude Include="Shapes\Cube.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\awesomeface.png" />

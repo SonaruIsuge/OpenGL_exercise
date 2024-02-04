@@ -22,6 +22,9 @@
     <Filter Include="來源檔案\Components">
       <UniqueIdentifier>{69795eb2-2099-4a35-b2a8-ca61abb08b35}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\Shapes">
+      <UniqueIdentifier>{0e824dd5-0118-402e-a910-c75a67145a81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp">
@@ -30,16 +33,25 @@
     <ClCompile Include="Shader.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="Shape.cpp">
+    <ClCompile Include="Components\Shape.cpp">
       <Filter>來源檔案\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes\Cube.cpp">
+      <Filter>來源檔案\Shapes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
       <Filter>來源檔案</Filter>
     </ClInclude>
-    <ClInclude Include="Shape.h">
+    <ClInclude Include="Components\Shape.h">
       <Filter>來源檔案\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes\Cube.h">
+      <Filter>來源檔案\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
