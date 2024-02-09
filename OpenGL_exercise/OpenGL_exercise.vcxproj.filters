@@ -25,6 +25,12 @@
     <Filter Include="來源檔案\Shapes">
       <UniqueIdentifier>{0e824dd5-0118-402e-a910-c75a67145a81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\Objects">
+      <UniqueIdentifier>{904920ae-18f0-450e-afce-0134f4fa223a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\Systems">
+      <UniqueIdentifier>{63432dee-2968-459e-adb9-7d09625fc250}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp">
@@ -39,6 +45,24 @@
     <ClCompile Include="Shapes\Cube.cpp">
       <Filter>來源檔案\Shapes</Filter>
     </ClCompile>
+    <ClCompile Include="Components\Input.cpp">
+      <Filter>來源檔案\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>來源檔案\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>來源檔案\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>來源檔案\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>來源檔案\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>來源檔案\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -52,6 +76,27 @@
     </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Input.h">
+      <Filter>來源檔案\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\Component.h">
+      <Filter>來源檔案\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>來源檔案\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>來源檔案\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>來源檔案\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>來源檔案\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>來源檔案\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

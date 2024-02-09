@@ -11,5 +11,4 @@ public:
 
 	Cube(Shape* parent = nullptr);
 	~Cube();
-	void Update(float dt);
 };

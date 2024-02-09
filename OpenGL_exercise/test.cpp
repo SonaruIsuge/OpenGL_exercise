@@ -7,7 +7,11 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "Shader.h"
+
+#include "Time.h"
+#include "Components/Input.h"
+#include "Camera.h"
+#include "Player.h"
 #include "Shapes/Cube.h"
 
 using namespace std;
@@ -15,16 +19,23 @@ using namespace glm;
 
 
 // Window dimensions
-const GLuint WIDTH = 800, HEIGHT = 600;
+const int WIDTH = 1280, HEIGHT = 720;
+
+mat4 ORTHO_MAT = ortho(-10.0f, 10.0f, -10.0f, 10.0f, -1.0f, 1.0f);
+mat4 VIEW_MAT = mat4(1.0f);
 
 GLFWwindow* window = nullptr;
-Shape* cube;
+
+Time* gameTime;
+Camera* camera;
+Input* input;
+Player* player;
 
 
 bool set_environment();
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 void mouse_callback(GLFWwindow* window, double xPos, double yPos);
-void scroll_callback(GLFWwindow* window, double xPos, double yPos);
+void scroll_callback(GLFWwindow* window, double xOffset, double yOffset);
 
 
 int main()
@@ -37,25 +48,34 @@ int main()
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
 
-	cube = new Cube();
-	cube->Init(vec4(1.0f, 0.0f, 0.0f, 1.0f), mat4(1.0f), ortho(-10.0f, 10.0f, -10.0f, 10.0f, -1.0f, 1.0f));
+	camera = new Camera(ORTHOGONAL);
+
+	gameTime = new Time();
+	input = new Input();
+	player = new Player(new Cube, camera, input);
 
 
 	// Game loop
 	while (!glfwWindowShouldClose(window)) {
+		
+		gameTime->Update();
 
 		glfwPollEvents();
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		cube->Draw();
+		player->Update(gameTime->deltaTime);
+
 
 		// Swap the screen buffers (Double buffers)
 		glfwSwapBuffers(window);
 	}
 
-	delete cube;
+	delete player;
+	delete input;
+	delete gameTime;
+	delete camera;
 
 	// Terminate GLFW, clearing any resources allocated by GLFW.
 	glfwTerminate();
@@ -68,16 +88,18 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
+
+	input->OnKeyPress(key, action);
 }
 
 
 void mouse_callback(GLFWwindow* window, double xPos, double yPos) {
-
+	input->OnMouseMove(xPos, yPos);
 }
 
 
-void scroll_callback(GLFWwindow* window, double xPos, double yPos) {
-
+void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
+	input->OnScrollMove(xOffset, yOffset);
 }
 
 

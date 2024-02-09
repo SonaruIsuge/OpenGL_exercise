@@ -15,13 +15,6 @@ Cube::Cube(Shape* parent) : Shape(parent) {
 
 	colors = new vec4[vtxNum];
 
-	colors[0] = vec4(1.0f);
-	colors[1] = vec4(1.0f);
-	colors[2] = vec4(1.0f);
-	colors[3] = vec4(1.0f);
-	colors[4] = vec4(1.0f);
-	colors[5] = vec4(1.0f);
-
 	CreateBuffers();
 
 	if (parent != nullptr) {
@@ -34,9 +27,4 @@ Cube::Cube(Shape* parent) : Shape(parent) {
 
 Cube::~Cube() {
 
-}
-
-
-void Cube::Update(float deltaTime) {
-	
 }

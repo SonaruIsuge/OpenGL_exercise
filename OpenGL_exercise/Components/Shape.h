@@ -47,7 +47,6 @@ public:
 
 	void Init(vec4 vColor, mat4 view, mat4 projection);
 	void Draw();
-	virtual void Update(float deltaTime) = 0;
 	
 	void SetSingleColor(vec4 color);
 	void SetViewMatrix(mat4& viewMat);
