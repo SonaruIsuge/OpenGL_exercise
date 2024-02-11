@@ -5,7 +5,7 @@
 
 
 Player::Player(Shape* shape, Camera* camera, Input* input) : Character(shape, camera), input(input) {
-
+	
 }
 
 

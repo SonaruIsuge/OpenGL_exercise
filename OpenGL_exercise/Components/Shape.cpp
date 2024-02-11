@@ -42,8 +42,7 @@ Shape::~Shape() {
 }
 
 
-void Shape::Init(vec4 vColor, mat4 view, mat4 projection) {
-	SetSingleColor(vColor);
+void Shape::Init(mat4 view, mat4 projection) {
 	SetShader(view, projection);
 }
 

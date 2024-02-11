@@ -45,7 +45,7 @@ public:
 	Shape(Shape* parent = nullptr);
 	virtual ~Shape();
 
-	void Init(vec4 vColor, mat4 view, mat4 projection);
+	void Init(mat4 view, mat4 projection);
 	void Draw();
 	
 	void SetSingleColor(vec4 color);

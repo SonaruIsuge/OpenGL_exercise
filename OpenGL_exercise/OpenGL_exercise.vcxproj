@@ -141,8 +141,10 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Shapes\Cube.cpp" />
+    <ClCompile Include="Shapes\GDShape.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="Time.cpp" />
+    <ClCompile Include="Tools\GeometryFileReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -155,13 +157,17 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Shapes\Cube.h" />
+    <ClInclude Include="Shapes\GDShape.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="Tools\GeometryFileReader.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\awesomeface.png" />
     <Image Include="Images\container.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GeometryData\Quad.gd" />
+    <None Include="GeometryData\Triangle.gd" />
     <None Include="Shader\fragment.frag" />
     <None Include="Shader\Simple2D.frag" />
     <None Include="Shader\Simple2D.vs" />

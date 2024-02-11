@@ -12,14 +12,14 @@
 #include "Components/Input.h"
 #include "Camera.h"
 #include "Player.h"
-#include "Shapes/Cube.h"
+#include "Shapes/GDShape.h"
 
 using namespace std;
 using namespace glm;
 
 
 // Window dimensions
-const int WIDTH = 1280, HEIGHT = 720;
+const int WIDTH = 720, HEIGHT = 720;
 
 mat4 ORTHO_MAT = ortho(-10.0f, 10.0f, -10.0f, 10.0f, -1.0f, 1.0f);
 mat4 VIEW_MAT = mat4(1.0f);
@@ -50,10 +50,10 @@ int main()
 
 	camera = new Camera(ORTHOGONAL);
 
-	gameTime = new Time();
-	input = new Input();
-	player = new Player(new Cube, camera, input);
-
+	gameTime = new Time;
+	input = new Input;
+	player = new Player(new GDShape("./GeometryData/Triangle.gd"), camera, input);
+	
 
 	// Game loop
 	while (!glfwWindowShouldClose(window)) {

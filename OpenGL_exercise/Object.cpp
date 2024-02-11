@@ -5,7 +5,7 @@ Object::Object(Shape* shape, Camera* camera) : position(shape->position), rotati
 	this->camera = camera;
 
 	this->shape = shape;
-	shape->Init(vec4(1.0f, 1.0f, 1.0f, 1.0f), this->camera->GetViewMatrix(), this->camera->GetProjMatrix());
+	shape->Init(this->camera->GetViewMatrix(), this->camera->GetProjMatrix());
 }
 
 

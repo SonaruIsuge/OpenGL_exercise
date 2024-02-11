@@ -1,7 +1,8 @@
 #include "Cube.h"
-
+#include "../Tools/GeometryFileReader.h"
 
 Cube::Cube(Shape* parent) : Shape(parent) {
+
 	vtxNum = 6;
 
 	points = new vec4[vtxNum];
