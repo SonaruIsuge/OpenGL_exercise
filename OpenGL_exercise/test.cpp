@@ -8,10 +8,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Time.h"
-#include "Components/Input.h"
-#include "Camera.h"
-#include "Player.h"
+#include "Systems/Time.h"
+#include "Systems/Camera.h"
+#include "Systems/Input.h"
+#include "GameObjects/Player.h"
 #include "Shapes/GDShape.h"
 
 using namespace std;

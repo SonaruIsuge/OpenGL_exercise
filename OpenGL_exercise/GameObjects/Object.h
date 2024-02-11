@@ -3,9 +3,9 @@
 #include <iostream>
 #include <type_traits>
 #include <list>
-#include "Components/Shape.h"
-#include "Camera.h"
-#include "Components/Component.h"
+#include "../Shapes/Shape.h"
+#include "..//Systems/Camera.h"
+#include "../Components/Component.h"
 
 using namespace std;
 

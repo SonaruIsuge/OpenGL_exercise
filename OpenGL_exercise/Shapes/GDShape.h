@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Components/Shape.h"
+#include "Shape.h"
 
 
 class GDShape : public Shape {

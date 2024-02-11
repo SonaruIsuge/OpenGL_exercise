@@ -133,32 +133,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Character.cpp" />
-    <ClCompile Include="Components\Input.cpp" />
-    <ClCompile Include="Components\Shape.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="GameObjects\Character.cpp" />
+    <ClCompile Include="GameObjects\Object.cpp" />
+    <ClCompile Include="GameObjects\Player.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Shapes\Cube.cpp" />
     <ClCompile Include="Shapes\GDShape.cpp" />
+    <ClCompile Include="Shapes\Shape.cpp" />
+    <ClCompile Include="Systems\Camera.cpp" />
+    <ClCompile Include="Systems\Input.cpp" />
+    <ClCompile Include="Systems\Time.cpp" />
     <ClCompile Include="test.cpp" />
-    <ClCompile Include="Time.cpp" />
     <ClCompile Include="Tools\GeometryFileReader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="Character.h" />
     <ClInclude Include="Components\Component.h" />
-    <ClInclude Include="Components\Input.h" />
-    <ClInclude Include="Components\Shape.h" />
     <ClInclude Include="Debug.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="GameObjects\Character.h" />
+    <ClInclude Include="GameObjects\Object.h" />
+    <ClInclude Include="GameObjects\Player.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Shapes\Cube.h" />
     <ClInclude Include="Shapes\GDShape.h" />
-    <ClInclude Include="Time.h" />
+    <ClInclude Include="Shapes\Shape.h" />
+    <ClInclude Include="Systems\Camera.h" />
+    <ClInclude Include="Systems\Input.h" />
+    <ClInclude Include="Systems\Time.h" />
     <ClInclude Include="Tools\GeometryFileReader.h" />
   </ItemGroup>
   <ItemGroup>

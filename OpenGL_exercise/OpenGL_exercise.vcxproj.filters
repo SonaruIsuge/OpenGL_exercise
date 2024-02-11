@@ -25,9 +25,6 @@
     <Filter Include="來源檔案\Shapes">
       <UniqueIdentifier>{0e824dd5-0118-402e-a910-c75a67145a81}</UniqueIdentifier>
     </Filter>
-    <Filter Include="來源檔案\Objects">
-      <UniqueIdentifier>{904920ae-18f0-450e-afce-0134f4fa223a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="來源檔案\Systems">
       <UniqueIdentifier>{63432dee-2968-459e-adb9-7d09625fc250}</UniqueIdentifier>
     </Filter>
@@ -37,6 +34,9 @@
     <Filter Include="來源檔案\GeometryData">
       <UniqueIdentifier>{f7932588-b46a-4e6a-a341-5d910540d657}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\GameObjects">
+      <UniqueIdentifier>{904920ae-18f0-450e-afce-0134f4fa223a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp">
@@ -45,43 +45,40 @@
     <ClCompile Include="Shader.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
-    <ClCompile Include="Components\Shape.cpp">
-      <Filter>來源檔案\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Shapes\Cube.cpp">
       <Filter>來源檔案\Shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="Components\Input.cpp">
-      <Filter>來源檔案\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>來源檔案\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>來源檔案\Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="Time.cpp">
-      <Filter>來源檔案\Systems</Filter>
-    </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>來源檔案\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>來源檔案\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Tools\GeometryFileReader.cpp">
       <Filter>來源檔案\Tools</Filter>
     </ClCompile>
+    <ClCompile Include="Shapes\Shape.cpp">
+      <Filter>來源檔案\Shapes</Filter>
+    </ClCompile>
     <ClCompile Include="Shapes\GDShape.cpp">
-      <Filter>來源檔案</Filter>
+      <Filter>來源檔案\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\Camera.cpp">
+      <Filter>來源檔案\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\Time.cpp">
+      <Filter>來源檔案\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects\Character.cpp">
+      <Filter>來源檔案\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects\Object.cpp">
+      <Filter>來源檔案\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects\Player.cpp">
+      <Filter>來源檔案\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\Input.cpp">
+      <Filter>來源檔案\Systems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
       <Filter>來源檔案</Filter>
-    </ClInclude>
-    <ClInclude Include="Components\Shape.h">
-      <Filter>來源檔案\Components</Filter>
     </ClInclude>
     <ClInclude Include="Shapes\Cube.h">
       <Filter>來源檔案\Shapes</Filter>
@@ -89,32 +86,35 @@
     <ClInclude Include="Debug.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
-    <ClInclude Include="Components\Input.h">
-      <Filter>來源檔案\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Components\Component.h">
       <Filter>來源檔案\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>來源檔案\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>來源檔案\Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="Time.h">
-      <Filter>來源檔案\Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>來源檔案\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>來源檔案\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Tools\GeometryFileReader.h">
       <Filter>來源檔案\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="Shapes\Shape.h">
+      <Filter>來源檔案\Shapes</Filter>
+    </ClInclude>
     <ClInclude Include="Shapes\GDShape.h">
-      <Filter>標頭檔</Filter>
+      <Filter>來源檔案\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Camera.h">
+      <Filter>來源檔案\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Time.h">
+      <Filter>來源檔案\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects\Character.h">
+      <Filter>來源檔案\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects\Object.h">
+      <Filter>來源檔案\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects\Player.h">
+      <Filter>來源檔案\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Input.h">
+      <Filter>來源檔案\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
