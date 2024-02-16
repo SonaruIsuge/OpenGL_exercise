@@ -41,8 +41,8 @@ public:
 
 	Shape* parent;
 
-
 	Shape(Shape* parent = nullptr);
+	Shape(const Shape& shape);
 	virtual ~Shape();
 
 	void Init(mat4 view, mat4 projection);

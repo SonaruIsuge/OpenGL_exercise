@@ -1,15 +1,21 @@
 #pragma once
 #include "../Systems/Input.h"
+#include "../Components/ShootingPart.h"
 #include "Character.h"
 
 
-const float moveSpeed = 1.0f;
+const float MOVESPEED = 1.0f;
+const int HEALTH = 100;
+const int ATTACK = 10;
+const float SHOOTING_COOLDOWN = 2.0f;
+const float BULLET_SPEED = 10.0f;
 
 class Player : public Character {
 private:
 	Input* input;
+	ShootingPart* shootingPart;
 
-	void HandleMove(float deltaTime);
+	void HandleInput(float deltaTime);
 
 public:
 

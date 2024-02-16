@@ -1,6 +1,5 @@
 #include "Character.h"
 
-
 Character::Character(Shape* shape, Camera* camera) : Object(shape, camera) {
 	camp = OTHER;
 	
@@ -8,11 +7,14 @@ Character::Character(Shape* shape, Camera* camera) : Object(shape, camera) {
 	attack = 0;
 	remainHealth = 0;
 	beHit = false;
+
+	AddComponent<Collider>(this, this->position, 1.0f);
+	collider = GetComponent<Collider>();
 }
 
 
 Character::~Character() {
-
+	
 }
 
 

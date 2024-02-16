@@ -10,6 +10,8 @@ Input::Input() {
 	
 	for (int i = 0; i < 512; ++i)
 		keys[i] = false;
+	for (int i = 0; i < 16; ++i)
+		mouse[i] = false;
 
 	firstMouseUpdate = true;
 }
@@ -40,6 +42,16 @@ void Input::OnMouseMove(double xPos, double yPos) {
 }
 
 
+void Input::OnMouseClick(int button, int action) {
+	if (button >= 0 && button < 16) {
+		if (action == GLFW_PRESS)
+			mouse[button] = true;
+		if (action == GLFW_RELEASE)
+			mouse[button] = false;
+	}
+}
+
+
 void Input::OnScrollMove(double xOffset, double yOffset) {
 	scrollOffset = vec2(xOffset, yOffset);
 }
@@ -65,4 +77,12 @@ bool Input::IsKeyPress(int key) {
 		return false;
 
 	return keys[key];
+}
+
+
+bool Input::IsMouseClick(int button) {
+	if (button < 0 || button >= 16)
+		return false;
+
+	return mouse[button];
 }

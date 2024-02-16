@@ -152,3 +152,43 @@ vec3 Shape::GetWorldPosition() {
 	pos += position;
 	return pos;
 }
+
+
+Shape::Shape(const Shape& shape) {
+	shader = nullptr;
+	VAO = 0;
+	VBO = 0;
+
+	modelViewLoc = 0;
+	projLoc = 0;
+
+	model = mat4(1.0f);
+	view = mat4(1.0f);
+	modelView = mat4(1.0f);
+	projection = mat4(1.0f);
+
+	updateProjMat = false;
+
+	position = vec3(0.0f);
+	rotation = vec3(0.0f);
+	scale = vec3(1.0f);
+
+	vtxNum = shape.vtxNum;
+	points = new vec4[vtxNum];
+	colors = new vec4[vtxNum];
+	for (int i = 0; i < vtxNum; i++) {
+		points[i] = shape.points[i];
+		colors[i] = shape.colors[i];
+	}
+
+	CreateBuffers();
+
+	if (shape.parent != nullptr) {
+		this->parent = shape.parent;
+	}
+	else this->parent = nullptr;
+	//memcpy(points, shape.points, sizeof(shape.points));
+	//memcpy(colors, shape.colors, sizeof(shape.colors));
+
+	//shader = new Shader("./Shader/Simple2D.vs", "./Shader/Simple2D.frag");
+}

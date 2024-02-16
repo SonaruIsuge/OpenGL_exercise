@@ -2,23 +2,29 @@
 
 #include <iostream>
 #include <type_traits>
-#include <list>
+#include <vector>
 #include "../Shapes/Shape.h"
 #include "..//Systems/Camera.h"
 #include "../Components/Component.h"
 
-using namespace std;
+
+enum Camp {
+	PLAYER,
+	ENEMY,
+	OTHER
+};
+
 
 template <typename T>
-concept IsComponent = is_base_of<Component, T>::value;
+concept IsComponent = std::is_base_of<Component, T>::value;
 
 
 class Object {
 protected:
-	Camera* camera;
-	list<Component*> components;
+	std::vector<std::unique_ptr<Component>> components;
 
 public:
+	Camera* camera;
 	Shape* shape;
 
 	vec3& position;
@@ -30,14 +36,34 @@ public:
 	void Update(float deltaTime);
 	void SetParent(Object* object);
 	void SetShape(Shape* shape);
-	
-	
-	template <IsComponent T>
-	T* GetComponent();
+
+
+	template<IsComponent T>
+	T* GetComponent() {
+		for (auto&& component : components) {
+			if(typeid(*component) == typeid(T))
+				return dynamic_cast<T*>(component.get());
+		}
+
+		return nullptr;
+	}
+
+
+	template<IsComponent T, typename... Args>
+	void AddComponent(Args&&... params) {
+		components.emplace_back(std::make_unique<T>(std::forward<Args>(params)...));
+	}
+
 
 	template <IsComponent T>
-	T* AddComponent();
+	void RemoveComponent() {
+		if (components.empty())
+			return;
 
-	template <IsComponent T> 
-	void RemoveComponent();
+		components.erase(std::remove_if(components.begin(), components.end(),
+			[](const auto& c) {
+				return dynamic_cast<T*>(c.get()) != nullptr;
+			}),
+			components.end());
+	}
 };

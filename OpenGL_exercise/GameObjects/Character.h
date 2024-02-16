@@ -1,14 +1,7 @@
 #pragma once
 
 #include "Object.h"
-
-
-enum Camp {
-	PLAYER,
-	ENEMY,
-	OTHER
-};
-
+#include "../Components/Collider.h"
 
 class Character: public Object {
 protected:
@@ -20,10 +13,12 @@ protected:
 	int remainHealth;
 	bool beHit;
 
+	Collider* collider;
+
 public:
 
 	Character(Shape* shape, Camera* camera);
-	~Character();
+	virtual ~Character();
 
 	void SetInitialData(int health, int attack);
 	void Update(float deltaTime);

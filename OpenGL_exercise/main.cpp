@@ -14,7 +14,6 @@
 #include "GameObjects/Player.h"
 #include "Shapes/GDShape.h"
 
-using namespace std;
 using namespace glm;
 
 
@@ -35,6 +34,7 @@ Player* player;
 bool set_environment();
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 void mouse_callback(GLFWwindow* window, double xPos, double yPos);
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 void scroll_callback(GLFWwindow* window, double xOffset, double yOffset);
 
 
@@ -47,12 +47,13 @@ int main()
 	glfwSetKeyCallback(window, key_callback);
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
+	glfwSetMouseButtonCallback(window, mouse_button_callback);
 
 	camera = new Camera(ORTHOGONAL);
-
 	gameTime = new Time;
 	input = new Input;
-	player = new Player(new GDShape("./GeometryData/Triangle.gd"), camera, input);
+
+	player = new Player(new GDShape("GeometryData/Triangle.gd"), camera, input);
 	
 
 	// Game loop
@@ -98,6 +99,11 @@ void mouse_callback(GLFWwindow* window, double xPos, double yPos) {
 }
 
 
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods) {
+	input->OnMouseClick(button, action);
+}
+
+
 void scroll_callback(GLFWwindow* window, double xOffset, double yOffset) {
 	input->OnScrollMove(xOffset, yOffset);
 }
@@ -117,7 +123,7 @@ bool set_environment() {
 	window = glfwCreateWindow(WIDTH, HEIGHT, "TestOpenGL", nullptr, nullptr);
 	
 	if (window == nullptr) {
-		cout << "Failed to create GLFW window" << endl;
+		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
 		return false;
 	}
@@ -129,7 +135,7 @@ bool set_environment() {
 
 	// Initialize GLEW to setup the OpenGL Function pointers
 	if (glewInit() != GLEW_OK) {
-		cout << "Failed to initialize GLEW" << endl;
+		std::cout << "Failed to initialize GLEW" << std::endl;
 		return false;
 	}
 

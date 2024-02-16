@@ -133,6 +133,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Components\Collider.cpp" />
+    <ClCompile Include="Components\ShootingPart.cpp" />
+    <ClCompile Include="GameObjects\Bullet.cpp" />
     <ClCompile Include="GameObjects\Character.cpp" />
     <ClCompile Include="GameObjects\Object.cpp" />
     <ClCompile Include="GameObjects\Player.cpp" />
@@ -142,13 +145,17 @@
     <ClCompile Include="Shapes\Shape.cpp" />
     <ClCompile Include="Systems\Camera.cpp" />
     <ClCompile Include="Systems\Input.cpp" />
+    <ClCompile Include="Systems\ObjectInteractHandler.cpp" />
     <ClCompile Include="Systems\Time.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Tools\GeometryFileReader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Components\Collider.h" />
     <ClInclude Include="Components\Component.h" />
+    <ClInclude Include="Components\ShootingPart.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="GameObjects\Bullet.h" />
     <ClInclude Include="GameObjects\Character.h" />
     <ClInclude Include="GameObjects\Object.h" />
     <ClInclude Include="GameObjects\Player.h" />
@@ -158,14 +165,17 @@
     <ClInclude Include="Shapes\Shape.h" />
     <ClInclude Include="Systems\Camera.h" />
     <ClInclude Include="Systems\Input.h" />
+    <ClInclude Include="Systems\ObjectInteractHandler.h" />
     <ClInclude Include="Systems\Time.h" />
     <ClInclude Include="Tools\GeometryFileReader.h" />
+    <ClInclude Include="Tools\ObjectPool.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\awesomeface.png" />
     <Image Include="Images\container.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GeometryData\Circle.gd" />
     <None Include="GeometryData\Quad.gd" />
     <None Include="GeometryData\Triangle.gd" />
     <None Include="Shader\fragment.frag" />

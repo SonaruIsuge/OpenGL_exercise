@@ -24,3 +24,21 @@ GDShape::GDShape(const char* dataPath, Shape* parent) : Shape(parent) {
 	}
 	else this->parent = nullptr;
 }
+
+
+GDShape::GDShape(const GDShape& shape) : Shape(shape) {
+	vtxNum = shape.vtxNum;
+	points = new vec4[vtxNum];
+	colors = new vec4[vtxNum];
+	for (int i = 0; i < vtxNum; i++) {
+		points[i] = shape.points[i];
+		colors[i] = shape.colors[i];
+	}
+
+	CreateBuffers();
+
+	if (shape.parent != nullptr) {
+		this->parent = shape.parent;
+	}
+	else this->parent = nullptr;
+}

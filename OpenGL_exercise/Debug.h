@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef DEBUG_H
-#define DEBUG_H
-
 
 
 #include <glm/glm.hpp>
@@ -28,5 +25,3 @@ namespace Debug {
 
 
 }
-
-#endif

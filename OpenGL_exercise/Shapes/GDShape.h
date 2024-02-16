@@ -6,4 +6,5 @@
 class GDShape : public Shape {
 public:
 	GDShape(const char* dataPath, Shape* parent = nullptr);
+	GDShape(const GDShape& shape);
 };

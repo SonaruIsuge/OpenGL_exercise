@@ -11,17 +11,12 @@ Object::Object(Shape* shape, Camera* camera) : position(shape->position), rotati
 
 Object::~Object() {
 	if (shape != nullptr) delete shape;
-
-	for (auto it = components.begin(); it != components.end(); ++it) {
-		delete* it;
-	}
-	components.clear();
 }
 
 
 void Object::Update(float deltaTime) {
-	for (Component* c : components) {
-		c->Update();
+	for (auto& c : components) {
+		c->Update(deltaTime);
 	}
 
 	shape->Draw();
@@ -41,31 +36,6 @@ void Object::SetShape(Shape* shape) {
 }
 
 
-
-template <IsComponent T> 
-T* Object::GetComponent() {
-	for (Component* c : components) {
-		if (dynamic_cast<T*>(c) != nullptr) {
-			return dynamic_cast<T*>(c);
-		}
-	}
-	return nullptr;
-}
-
-
-template <IsComponent T> 
-T* Object::AddComponent() {
-	components.push_back(new T());
-	return components.end();
-}
-
-
-template <IsComponent T>
-void Object::RemoveComponent() {
-	for (Component* c : components) {
-		if (dynamic_cast<T*>(c) != nullptr) {
-			delete *c;
-			components.erase(c);
-		}
-	}
-}
+//Camera* Object::GetCamera() {
+//	return camera;
+//}

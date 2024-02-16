@@ -39,7 +39,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="test.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
@@ -73,6 +73,18 @@
       <Filter>來源檔案\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="Systems\Input.cpp">
+      <Filter>來源檔案\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\Collider.cpp">
+      <Filter>來源檔案\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects\Bullet.cpp">
+      <Filter>來源檔案\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\ShootingPart.cpp">
+      <Filter>來源檔案\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\ObjectInteractHandler.cpp">
       <Filter>來源檔案\Systems</Filter>
     </ClCompile>
   </ItemGroup>
@@ -116,6 +128,21 @@
     <ClInclude Include="Systems\Input.h">
       <Filter>來源檔案\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="Components\Collider.h">
+      <Filter>來源檔案\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects\Bullet.h">
+      <Filter>來源檔案\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\ShootingPart.h">
+      <Filter>來源檔案\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\ObjectInteractHandler.h">
+      <Filter>來源檔案\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools\ObjectPool.h">
+      <Filter>來源檔案\Tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\awesomeface.png">
@@ -142,6 +169,9 @@
       <Filter>來源檔案\GeometryData</Filter>
     </None>
     <None Include="GeometryData\Triangle.gd">
+      <Filter>來源檔案\GeometryData</Filter>
+    </None>
+    <None Include="GeometryData\Circle.gd">
       <Filter>來源檔案\GeometryData</Filter>
     </None>
   </ItemGroup>
