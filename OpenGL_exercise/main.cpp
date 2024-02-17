@@ -8,6 +8,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Systems/BulletManager.h"
 #include "Systems/Time.h"
 #include "Systems/Camera.h"
 #include "Systems/Input.h"
@@ -49,11 +50,15 @@ int main()
 	glfwSetScrollCallback(window, scroll_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
 
+
 	camera = new Camera(ORTHOGONAL);
 	gameTime = new Time;
 	input = new Input;
 
-	player = new Player(new GDShape("GeometryData/Triangle.gd"), camera, input);
+	Bullet* playerBullet = new Bullet(new GDShape("GeometryData/BulletA.gd"), camera);
+	BulletManager::GetInstance()->AddBulletTypeToPool(PlayerBullet, *playerBullet, 100);
+
+	player = new Player(new GDShape("GeometryData/PlayerShape.gd"), camera, input);
 	
 
 	// Game loop
@@ -67,7 +72,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		player->Update(gameTime->deltaTime);
-
+		BulletManager::GetInstance()->Update(gameTime->deltaTime);
 
 		// Swap the screen buffers (Double buffers)
 		glfwSwapBuffers(window);

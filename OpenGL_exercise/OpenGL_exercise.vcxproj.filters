@@ -37,6 +37,9 @@
     <Filter Include="來源檔案\GameObjects">
       <UniqueIdentifier>{904920ae-18f0-450e-afce-0134f4fa223a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\GameObjects\Enemy">
+      <UniqueIdentifier>{9f5dab05-29dc-4ac8-8858-776447395883}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -44,9 +47,6 @@
     </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="Shapes\Cube.cpp">
-      <Filter>來源檔案\Shapes</Filter>
     </ClCompile>
     <ClCompile Include="Tools\GeometryFileReader.cpp">
       <Filter>來源檔案\Tools</Filter>
@@ -84,16 +84,16 @@
     <ClCompile Include="Components\ShootingPart.cpp">
       <Filter>來源檔案\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Systems\ObjectInteractHandler.cpp">
+    <ClCompile Include="GameObjects\Enemy\Enemy.cpp">
+      <Filter>來源檔案\GameObjects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\BulletManager.cpp">
       <Filter>來源檔案\Systems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
       <Filter>來源檔案</Filter>
-    </ClInclude>
-    <ClInclude Include="Shapes\Cube.h">
-      <Filter>來源檔案\Shapes</Filter>
     </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>標頭檔</Filter>
@@ -137,11 +137,14 @@
     <ClInclude Include="Components\ShootingPart.h">
       <Filter>來源檔案\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Systems\ObjectInteractHandler.h">
-      <Filter>來源檔案\Systems</Filter>
-    </ClInclude>
     <ClInclude Include="Tools\ObjectPool.h">
       <Filter>來源檔案\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects\Enemy\Enemy.h">
+      <Filter>來源檔案\GameObjects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\BulletManager.h">
+      <Filter>來源檔案\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +175,12 @@
       <Filter>來源檔案\GeometryData</Filter>
     </None>
     <None Include="GeometryData\Circle.gd">
+      <Filter>來源檔案\GeometryData</Filter>
+    </None>
+    <None Include="GeometryData\PlayerShape.gd">
+      <Filter>來源檔案\GeometryData</Filter>
+    </None>
+    <None Include="GeometryData\BulletA.gd">
       <Filter>來源檔案\GeometryData</Filter>
     </None>
   </ItemGroup>

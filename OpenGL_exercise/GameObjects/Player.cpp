@@ -10,8 +10,7 @@ Player::Player(Shape* shape, Camera* camera, Input* input) : Character(shape, ca
 
 	SetInitialData(HEALTH, ATTACK);
 
-	Bullet* bullet = new Bullet(new GDShape("GeometryData/Circle.gd"), camera);
-	AddComponent<ShootingPart>(bullet, this, SHOOTING_COOLDOWN);
+	AddComponent<ShootingPart>(SHOOTING_COOLDOWN);
 	shootingPart = GetComponent<ShootingPart>();
 }
 
@@ -40,6 +39,6 @@ void Player::HandleInput(float deltaTime) {
 		position += vec3(1.0f, 0.0f, 0.0f) * MOVESPEED * deltaTime;
 
 	if (this->input->IsMouseClick(GLFW_MOUSE_BUTTON_1)) {
-		shootingPart->Fire(this->camp, vec3(0, 1, 0), 10, 1);
+		shootingPart->Fire(this->camp, position + vec3(0, 0.5f, 0), vec3(0, 1, 0), 10, 1);
 	}
 }

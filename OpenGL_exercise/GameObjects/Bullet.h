@@ -2,6 +2,7 @@
 #include "Object.h"
 #include "../Components/Collider.h"
 
+const float RECYCLE_TIME = 5.0f;
 
 class Bullet : public Object {
 protected:
@@ -10,6 +11,7 @@ protected:
 	vec3 direction;
 	Camp camp;
 
+	float recycleTimer;
 	bool active;
 
 	Collider* collider;
@@ -23,4 +25,5 @@ public:
 	void Reset();
 	void SetCamp(Camp camp);
 	Camp GetCamp();
+	bool IsActive();
 };
