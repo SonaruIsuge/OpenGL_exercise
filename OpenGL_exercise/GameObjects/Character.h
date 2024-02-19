@@ -13,9 +13,9 @@ protected:
 	int remainHealth;
 	bool beHit;
 
-	Collider* collider;
 
 public:
+	Collider* collider;
 
 	Character(Shape* shape, Camera* camera);
 	virtual ~Character();

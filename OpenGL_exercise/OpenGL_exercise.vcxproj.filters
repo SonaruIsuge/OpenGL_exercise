@@ -90,6 +90,12 @@
     <ClCompile Include="Systems\BulletManager.cpp">
       <Filter>來源檔案\Systems</Filter>
     </ClCompile>
+    <ClCompile Include="Systems\EnemyManager.cpp">
+      <Filter>來源檔案\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\LevelManager.cpp">
+      <Filter>來源檔案\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -146,6 +152,15 @@
     <ClInclude Include="Systems\BulletManager.h">
       <Filter>來源檔案\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="Systems\EnemyManager.h">
+      <Filter>來源檔案\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\LevelManager.h">
+      <Filter>來源檔案\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools\GameEnum.h">
+      <Filter>來源檔案\Tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\awesomeface.png">
@@ -181,6 +196,9 @@
       <Filter>來源檔案\GeometryData</Filter>
     </None>
     <None Include="GeometryData\BulletA.gd">
+      <Filter>來源檔案\GeometryData</Filter>
+    </None>
+    <None Include="GeometryData\NormalEnemyShape.gd">
       <Filter>來源檔案\GeometryData</Filter>
     </None>
   </ItemGroup>

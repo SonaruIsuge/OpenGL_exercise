@@ -8,7 +8,7 @@ Character::Character(Shape* shape, Camera* camera) : Object(shape, camera) {
 	remainHealth = 0;
 	beHit = false;
 
-	AddComponent<Collider>(this, this->position, 1.0f);
+	AddComponent<Collider>(this, this->position, shape->boundRadius);
 	collider = GetComponent<Collider>();
 }
 

@@ -38,6 +38,7 @@ public:
 	vec3 position;
 	vec3 rotation;
 	vec3 scale;
+	float boundRadius;
 
 	Shape* parent;
 

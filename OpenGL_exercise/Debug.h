@@ -23,5 +23,7 @@ namespace Debug {
 		}
 	}
 
-
+	void Print(const vec3& vec) {
+		std::cout << "(" << vec.x << ", " << vec.y << ", " << vec.z << ")" << std::endl;
+	}
 }

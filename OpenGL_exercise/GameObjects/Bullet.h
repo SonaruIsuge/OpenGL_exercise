@@ -14,9 +14,10 @@ protected:
 	float recycleTimer;
 	bool active;
 
-	Collider* collider;
 
 public:
+	Collider* collider;
+	
 	Bullet(Shape* shape, Camera* camera);
 	~Bullet();
 

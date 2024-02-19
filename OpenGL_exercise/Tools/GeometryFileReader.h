@@ -11,6 +11,7 @@ typedef struct GeometryFileData {
 	int vertexNum;
 	vector<vec4> points;
 	vector<vec4> colors;
+	float boundRadius;
 } GeometryData;
 
 

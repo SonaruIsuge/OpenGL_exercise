@@ -9,14 +9,21 @@ const float NORMAL_E_BULLET_COOLDOWN = 1.0f;
 
 class Enemy : public Character {
 protected:
+	Object* target;
+	bool active;
+
 	void UpdateShooting(float deltaTime);
 	void UpdateMove(float deltaTime);
 	
 public:
 	ShootingPart* shootingPart;
 
-	Enemy(Shape* shape, Camera* camera);
+	Enemy(Shape* shape, Camera* camera, Object* fireTarget);
 	~Enemy();
 
+	void Init(vec3 position);
 	void Update(float deltaTime);
+	void Dead();
+	void SetActive(bool active);
+	bool IsActive();
 };

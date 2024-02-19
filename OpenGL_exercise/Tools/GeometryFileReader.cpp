@@ -35,6 +35,12 @@ GeometryData GeometryFileReader::ReadDataFromFile(const char* filePath, bool& su
             file >> color.x >> color.y >> color.z >> color.w;
             result.colors.push_back(color);
         }
+
+        if (line == "r") {
+            float radius = 0;
+            file >> radius;
+            result.boundRadius = radius;
+        }
     }
 
     result.vertexNum = result.points.size();

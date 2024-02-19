@@ -1,5 +1,5 @@
 #include "BulletManager.h"
-
+#include "EnemyManager.h"
 
 BulletManager* BulletManager::_instance = nullptr;
 
@@ -13,7 +13,7 @@ BulletManager* BulletManager::GetInstance() {
 
 
 BulletManager::BulletManager() {
-
+	player = nullptr;
 }
 
 
@@ -22,7 +22,17 @@ BulletManager::~BulletManager() {
 }
 
 
+void BulletManager::SetPlayerRef(Player& player) {
+	this->player = &player;
+}
+
+
 void BulletManager::AddBulletTypeToPool(BulletType type, const Bullet& prototype, int numInPool) {
+	if (player == nullptr) {
+		std::cout << "ERROR::NEED SET PLAYER TO BULLET MANAGER" << std::endl;
+		return;
+	}
+
 	// Chekc if key already exists
 	if (allTypeBullets.find(type) != allTypeBullets.end())
 		return;
@@ -59,6 +69,7 @@ void BulletManager::Update(float deltaTime) {
 			}
 
 			currentNode->data->Update(deltaTime);
+			CheckCollide(*currentNode->data);
 			currentNode = currentNode->next;
 		}
 	}
@@ -76,6 +87,16 @@ void BulletManager::Destroy() {
 }
 
 
-void BulletManager::CheckCollide() {
-
+void BulletManager::CheckCollide(Bullet& bullet) {
+	if (bullet.GetCamp() == PLAYER) {
+		for (auto& enemy : EnemyManager::GetInstance()->activeEnemyList) {
+			if (bullet.collider->IsCollide(enemy->collider))
+				bullet.Reset();
+		}
+	}
+	else if (bullet.GetCamp() == ENEMY) {
+		// check if hit player
+		if (bullet.collider->IsCollide(player->collider))
+			bullet.Reset();
+	}
 }

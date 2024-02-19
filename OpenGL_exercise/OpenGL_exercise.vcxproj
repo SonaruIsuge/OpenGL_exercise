@@ -145,7 +145,9 @@
     <ClCompile Include="Shapes\Shape.cpp" />
     <ClCompile Include="Systems\BulletManager.cpp" />
     <ClCompile Include="Systems\Camera.cpp" />
+    <ClCompile Include="Systems\EnemyManager.cpp" />
     <ClCompile Include="Systems\Input.cpp" />
+    <ClCompile Include="Systems\LevelManager.cpp" />
     <ClCompile Include="Systems\Time.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Tools\GeometryFileReader.cpp" />
@@ -165,8 +167,11 @@
     <ClInclude Include="Shapes\Shape.h" />
     <ClInclude Include="Systems\BulletManager.h" />
     <ClInclude Include="Systems\Camera.h" />
+    <ClInclude Include="Systems\EnemyManager.h" />
     <ClInclude Include="Systems\Input.h" />
+    <ClInclude Include="Systems\LevelManager.h" />
     <ClInclude Include="Systems\Time.h" />
+    <ClInclude Include="Tools\GameEnum.h" />
     <ClInclude Include="Tools\GeometryFileReader.h" />
     <ClInclude Include="Tools\ObjectPool.h" />
   </ItemGroup>
@@ -177,6 +182,7 @@
   <ItemGroup>
     <None Include="GeometryData\BulletA.gd" />
     <None Include="GeometryData\Circle.gd" />
+    <None Include="GeometryData\NormalEnemyShape.gd" />
     <None Include="GeometryData\PlayerShape.gd" />
     <None Include="GeometryData\Quad.gd" />
     <None Include="GeometryData\Triangle.gd" />

@@ -27,5 +27,5 @@ bool Collider::IsCollide(const Collider* other) {
 	vec3 diff = other->center - this->center;
 	float distance = length(diff);
 
-	return distance <= this->radius + other->radius;
+	return distance <= this->radius * owner->scale.x + other->radius * other->owner->scale.x;
 }

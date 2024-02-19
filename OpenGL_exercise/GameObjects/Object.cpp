@@ -3,8 +3,8 @@
 
 Object::Object(Shape* shape, Camera* camera) : position(shape->position), rotation(shape->rotation), scale(shape->scale) {
 	this->camera = camera;
-
 	this->shape = shape;
+
 	shape->Init(this->camera->GetViewMatrix(), this->camera->GetProjMatrix());
 }
 

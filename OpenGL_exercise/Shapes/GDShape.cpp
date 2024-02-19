@@ -16,6 +16,7 @@ GDShape::GDShape(const char* dataPath, Shape* parent) : Shape(parent) {
 		points[i] = data.points[i];
 		colors[i] = data.colors[i];
 	}
+	boundRadius = data.boundRadius;
 
 	CreateBuffers();
 

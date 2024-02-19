@@ -6,13 +6,7 @@
 #include "../Shapes/Shape.h"
 #include "..//Systems/Camera.h"
 #include "../Components/Component.h"
-
-
-enum Camp {
-	PLAYER,
-	ENEMY,
-	OTHER
-};
+#include "../Tools/GameEnum.h"
 
 
 template <typename T>

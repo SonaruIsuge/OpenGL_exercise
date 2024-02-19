@@ -9,6 +9,8 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Systems/BulletManager.h"
+#include "Systems/EnemyManager.h"
+#include "Systems/LevelManager.h"
 #include "Systems/Time.h"
 #include "Systems/Camera.h"
 #include "Systems/Input.h"
@@ -44,22 +46,20 @@ int main()
 	if (!set_environment())
 		return -1;
 
-	// Set the required callback functions
 	glfwSetKeyCallback(window, key_callback);
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
 
-
+	
 	camera = new Camera(ORTHOGONAL);
 	gameTime = new Time;
 	input = new Input;
-
-	Bullet* playerBullet = new Bullet(new GDShape("GeometryData/BulletA.gd"), camera);
-	BulletManager::GetInstance()->AddBulletTypeToPool(PlayerBullet, *playerBullet, 100);
-
 	player = new Player(new GDShape("GeometryData/PlayerShape.gd"), camera, input);
 	
+	
+	LevelManager levelManager(*player, *camera);
+	levelManager.Init();
 
 	// Game loop
 	while (!glfwWindowShouldClose(window)) {
@@ -73,6 +73,7 @@ int main()
 
 		player->Update(gameTime->deltaTime);
 		BulletManager::GetInstance()->Update(gameTime->deltaTime);
+		EnemyManager::GetInstance()->Update(gameTime->deltaTime);
 
 		// Swap the screen buffers (Double buffers)
 		glfwSwapBuffers(window);

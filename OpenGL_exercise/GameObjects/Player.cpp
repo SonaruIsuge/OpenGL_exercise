@@ -10,7 +10,7 @@ Player::Player(Shape* shape, Camera* camera, Input* input) : Character(shape, ca
 
 	SetInitialData(HEALTH, ATTACK);
 
-	AddComponent<ShootingPart>(SHOOTING_COOLDOWN);
+	AddComponent<ShootingPart>(PlayerBullet, SHOOTING_COOLDOWN);
 	shootingPart = GetComponent<ShootingPart>();
 }
 
