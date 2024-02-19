@@ -30,6 +30,7 @@ public:
 	void Update(float deltaTime);
 	void SetParent(Object* object);
 	void SetShape(Shape* shape);
+	void SetColor(vec4 color);
 
 
 	template<IsComponent T>

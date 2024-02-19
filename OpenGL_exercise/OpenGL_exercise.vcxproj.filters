@@ -161,6 +161,9 @@
     <ClInclude Include="Tools\GameEnum.h">
       <Filter>來源檔案\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="Tools\GameSettings.h">
+      <Filter>來源檔案\Tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\awesomeface.png">

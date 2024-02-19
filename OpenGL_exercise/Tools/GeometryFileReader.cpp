@@ -14,15 +14,15 @@ GeometryFileReader::~GeometryFileReader() {
 
 GeometryData GeometryFileReader::ReadDataFromFile(const char* filePath, bool& success) {
     GeometryData result;
-    ifstream file(filePath);
+    std::ifstream file(filePath);
 
     if (!file.is_open()) {
-        cout << "ERROR: CAN'T OPEN FILE: " << filePath << endl;
+        std::cout << "ERROR: CAN'T OPEN FILE: " << filePath << std::endl;
         success = false;
         return result;
     }
 
-    string line;
+    std::string line;
     while (file >> line) {
         if (line == "p") {
             vec4 point(1.0f);

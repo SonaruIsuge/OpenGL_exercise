@@ -172,6 +172,7 @@
     <ClInclude Include="Systems\LevelManager.h" />
     <ClInclude Include="Systems\Time.h" />
     <ClInclude Include="Tools\GameEnum.h" />
+    <ClInclude Include="Tools\GameSettings.h" />
     <ClInclude Include="Tools\GeometryFileReader.h" />
     <ClInclude Include="Tools\ObjectPool.h" />
   </ItemGroup>

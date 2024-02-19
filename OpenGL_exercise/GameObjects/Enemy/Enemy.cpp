@@ -1,5 +1,6 @@
 #include "../Bullet.h"
 #include "../../Shapes/GDShape.h"
+#include "../../Tools/GameSettings.h"
 #include "Enemy.h"
 
 Enemy::Enemy(Shape* shape, Camera* camera, Object* fireTarget) : Character(shape, camera), target(fireTarget) {
@@ -37,7 +38,6 @@ void Enemy::Update(float deltaTime) {
 
 
 void Enemy::Dead() {
-
 	active = false;
 }
 
@@ -53,10 +53,16 @@ bool Enemy::IsActive() {
 
 
 void Enemy::UpdateShooting(float deltaTime) {
-	shootingPart->Fire(*target, this->camp, position + vec3(0, -0.5f, 0), 10, 1);
+	shootingPart->Fire(*target, this->camp, position + vec3(0, -0.5f, 0), 8, NORMAL_E_DAMAGE);
 }
 
 
 void Enemy::UpdateMove(float deltaTime) {
+	
+	this->position.y += -NORMAL_E_MOVESPEED * deltaTime;
+	this->position.x = VIEWPORT_HALF_WIDTH / 2 * cos(this->position.y);
 
+	if (this->position.y < -VIEWPORT_HALF_HEIGHT * 1.2f) {
+		active = false;
+	}
 }

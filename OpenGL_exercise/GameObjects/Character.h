@@ -12,7 +12,7 @@ protected:
 
 	int remainHealth;
 	bool beHit;
-
+	bool dead;
 
 public:
 	Collider* collider;
@@ -22,8 +22,9 @@ public:
 
 	void SetInitialData(int health, int attack);
 	void Update(float deltaTime);
-	void GetDamage(int damage);
+	void BeDamaged(int damage);
 
 	int GetHealth();
 	int GetAttackValue();
+	bool IsDead();
 };

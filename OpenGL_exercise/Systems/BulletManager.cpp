@@ -90,13 +90,17 @@ void BulletManager::Destroy() {
 void BulletManager::CheckCollide(Bullet& bullet) {
 	if (bullet.GetCamp() == PLAYER) {
 		for (auto& enemy : EnemyManager::GetInstance()->activeEnemyList) {
-			if (bullet.collider->IsCollide(enemy->collider))
+			if (bullet.collider->IsCollide(enemy->collider)) {
+				enemy->BeDamaged(bullet.GetAttackValue());
 				bullet.Reset();
+			}
 		}
 	}
 	else if (bullet.GetCamp() == ENEMY) {
 		// check if hit player
-		if (bullet.collider->IsCollide(player->collider))
+		if (bullet.collider->IsCollide(player->collider)) {
+			player->BeDamaged(bullet.GetAttackValue());
 			bullet.Reset();
+		}
 	}
 }

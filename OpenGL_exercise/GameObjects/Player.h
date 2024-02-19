@@ -4,12 +4,6 @@
 #include "Character.h"
 
 
-const float MOVESPEED = 5.0f;
-const int HEALTH = 100;
-const int ATTACK = 10;
-const float SHOOTING_COOLDOWN = 0.1f;
-const float BULLET_SPEED = 10.0f;
-
 class Player : public Character {
 private:
 	Input* input;

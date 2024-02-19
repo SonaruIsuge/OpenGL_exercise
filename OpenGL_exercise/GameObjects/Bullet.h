@@ -2,7 +2,6 @@
 #include "Object.h"
 #include "../Components/Collider.h"
 
-const float RECYCLE_TIME = 5.0f;
 
 class Bullet : public Object {
 protected:
@@ -26,5 +25,6 @@ public:
 	void Reset();
 	void SetCamp(Camp camp);
 	Camp GetCamp();
+	int GetAttackValue();
 	bool IsActive();
 };

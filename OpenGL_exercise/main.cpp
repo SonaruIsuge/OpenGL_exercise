@@ -14,16 +14,14 @@
 #include "Systems/Time.h"
 #include "Systems/Camera.h"
 #include "Systems/Input.h"
+#include "Tools/GameSettings.h"
 #include "GameObjects/Player.h"
 #include "Shapes/GDShape.h"
 
 using namespace glm;
 
 
-// Window dimensions
-const int WIDTH = 720, HEIGHT = 720;
-
-mat4 ORTHO_MAT = ortho(-10.0f, 10.0f, -10.0f, 10.0f, -1.0f, 1.0f);
+mat4 ORTHO_MAT = ortho(-VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_WIDTH, -VIEWPORT_HALF_HEIGHT, VIEWPORT_HALF_HEIGHT, -1.0f, 1.0f);
 mat4 VIEW_MAT = mat4(1.0f);
 
 GLFWwindow* window = nullptr;
@@ -35,6 +33,8 @@ Player* player;
 
 
 bool set_environment();
+void initGame();
+void destroy();
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 void mouse_callback(GLFWwindow* window, double xPos, double yPos);
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
@@ -51,26 +51,19 @@ int main()
 	glfwSetScrollCallback(window, scroll_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
 
-	
-	camera = new Camera(ORTHOGONAL);
-	gameTime = new Time;
-	input = new Input;
-	player = new Player(new GDShape("GeometryData/PlayerShape.gd"), camera, input);
-	
-	
+	initGame();
 	LevelManager levelManager(*player, *camera);
 	levelManager.Init();
 
 	// Game loop
 	while (!glfwWindowShouldClose(window)) {
 		
-		gameTime->Update();
-
 		glfwPollEvents();
-
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		gameTime->Update();
+		levelManager.Update(gameTime->deltaTime);
 		player->Update(gameTime->deltaTime);
 		BulletManager::GetInstance()->Update(gameTime->deltaTime);
 		EnemyManager::GetInstance()->Update(gameTime->deltaTime);
@@ -79,14 +72,19 @@ int main()
 		glfwSwapBuffers(window);
 	}
 
-	delete player;
-	delete input;
-	delete gameTime;
-	delete camera;
+	destroy();
 
 	// Terminate GLFW, clearing any resources allocated by GLFW.
 	glfwTerminate();
 	return 0;
+}
+
+
+void initGame() {
+	camera = new Camera(ORTHOGONAL);
+	gameTime = new Time;
+	input = new Input;
+	player = new Player(new GDShape("GeometryData/PlayerShape.gd"), camera, input);
 }
 
 
@@ -152,4 +150,14 @@ bool set_environment() {
 	// glEnable(GL_DEPTH_TEST);
 
 	return true;
+}
+
+
+void destroy() {
+	EnemyManager::GetInstance()->Destroy();
+	BulletManager::GetInstance()->Destroy();
+	delete player;
+	delete input;
+	delete gameTime;
+	delete camera;
 }

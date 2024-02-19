@@ -36,6 +36,6 @@ void Object::SetShape(Shape* shape) {
 }
 
 
-//Camera* Object::GetCamera() {
-//	return camera;
-//}
+void Object::SetColor(vec4 color) {
+	shape->SetSingleColor(color);
+}

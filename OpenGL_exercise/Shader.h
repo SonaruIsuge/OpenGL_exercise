@@ -4,7 +4,6 @@
 
 #include <GL/glew.h>
 
-using namespace std;
 
 class Shader
 {

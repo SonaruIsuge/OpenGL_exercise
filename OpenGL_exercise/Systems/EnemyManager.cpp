@@ -65,6 +65,10 @@ void EnemyManager::Update(float deltaTime) {
 		while (currentNode != nullptr) {
 
 			// handle inactive bullet;
+			if (currentNode->data->IsDead()) {
+				currentNode->data->SetActive(false);
+				// Count dead enemy number
+			}
 			if (!currentNode->data->IsActive()) {
 				pool.second->Recycle(currentNode);
 			}
@@ -73,6 +77,7 @@ void EnemyManager::Update(float deltaTime) {
 			currentNode->data->Update(deltaTime);
 			currentNode = currentNode->next;
 		}
+		std::cout << pool.second.get()->GetUsingLength() << ", " << pool.second.get()->GetLength() << std::endl;
 	}
 }
 

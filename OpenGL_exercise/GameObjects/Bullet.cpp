@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include "../Tools/GameSettings.h"
 
 
 Bullet::Bullet(Shape* shape, Camera* camera) : Object(shape, camera) {
@@ -58,6 +59,11 @@ void Bullet::SetCamp(Camp camp) {
 
 Camp Bullet::GetCamp() {
 	return this->camp;
+}
+
+
+int Bullet::GetAttackValue() {
+	return damage;
 }
 
 

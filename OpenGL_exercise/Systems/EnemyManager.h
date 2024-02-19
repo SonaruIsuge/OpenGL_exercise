@@ -5,8 +5,6 @@
 #include "../GameObjects/Enemy/Enemy.h"
 
 
-
-
 class EnemyManager {
 private:
 	static EnemyManager* _instance;
@@ -19,7 +17,7 @@ public:
 
 	static EnemyManager* GetInstance();
 	
-	vector<Enemy*> activeEnemyList;
+	std::vector<Enemy*> activeEnemyList;
 
 	EnemyManager();
 	~EnemyManager();

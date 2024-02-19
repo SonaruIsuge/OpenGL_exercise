@@ -3,14 +3,13 @@
 #include <vector>
 #include <glm/glm.hpp>
 
-using namespace std;
 using namespace glm;
 
 
 typedef struct GeometryFileData {
 	int vertexNum;
-	vector<vec4> points;
-	vector<vec4> colors;
+	std::vector<vec4> points;
+	std::vector<vec4> colors;
 	float boundRadius;
 } GeometryData;
 
