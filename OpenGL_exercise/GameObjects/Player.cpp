@@ -8,8 +8,9 @@ Player::Player(Shape* shape, Camera* camera, Input* input) : Character(shape, ca
 	camp = PLAYER;
 
 	SetInitialData(PLAYER_HEALTH, PLAYER_ATTACK);
+	SetColor(PLAYER_COLOR);
 
-	AddComponent<ShootingPart>(PlayerBullet, PLAYER_SHOOTING_COOLDOWN);
+	AddComponent<ShootingPart>(ArrowBullet, PLAYER_SHOOTING_COOLDOWN);
 	shootingPart = GetComponent<ShootingPart>();
 }
 
@@ -38,6 +39,6 @@ void Player::HandleInput(float deltaTime) {
 		position += vec3(1.0f, 0.0f, 0.0f) * PLAYER_MOVESPEED * deltaTime;
 
 	if (this->input->IsMouseClick(GLFW_MOUSE_BUTTON_1)) {
-		shootingPart->Fire(this->camp, position + vec3(0, 0.5f, 0), vec3(0, 1, 0), 10, PLAYER_ATTACK);
+		shootingPart->Fire(this->camp, position + vec3(0, 0.5f, 0), vec3(0, 1, 0), PLAYER_BULLET_SPEED, PLAYER_ATTACK);
 	}
 }

@@ -96,6 +96,18 @@
     <ClCompile Include="Systems\LevelManager.cpp">
       <Filter>來源檔案\Systems</Filter>
     </ClCompile>
+    <ClCompile Include="Tools\Random.cpp">
+      <Filter>來源檔案\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects\Enemy\StrongEnemy.cpp">
+      <Filter>來源檔案\GameObjects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="math.cpp">
+      <Filter>標頭檔</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects\Enemy\NormalEnemy.cpp">
+      <Filter>來源檔案\GameObjects\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -164,6 +176,18 @@
     <ClInclude Include="Tools\GameSettings.h">
       <Filter>來源檔案\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="Tools\Random.h">
+      <Filter>來源檔案\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects\Enemy\StrongEnemy.h">
+      <Filter>來源檔案\GameObjects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="math.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects\Enemy\NormalEnemy.h">
+      <Filter>來源檔案\GameObjects\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\awesomeface.png">
@@ -195,13 +219,19 @@
     <None Include="GeometryData\Circle.gd">
       <Filter>來源檔案\GeometryData</Filter>
     </None>
-    <None Include="GeometryData\PlayerShape.gd">
+    <None Include="GeometryData\Plane.gd">
       <Filter>來源檔案\GeometryData</Filter>
     </None>
-    <None Include="GeometryData\BulletA.gd">
+    <None Include="GeometryData\Arrow.gd">
       <Filter>來源檔案\GeometryData</Filter>
     </None>
-    <None Include="GeometryData\NormalEnemyShape.gd">
+    <None Include="GeometryData\Rhombic.gd">
+      <Filter>來源檔案\GeometryData</Filter>
+    </None>
+    <None Include="GeometryData\Shuriken.gd">
+      <Filter>來源檔案\GeometryData</Filter>
+    </None>
+    <None Include="GeometryData\Thorn.gd">
       <Filter>來源檔案\GeometryData</Filter>
     </None>
   </ItemGroup>

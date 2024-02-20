@@ -9,6 +9,7 @@ Bullet::Bullet(Shape* shape, Camera* camera) : Object(shape, camera) {
 	direction = vec3(0.0f);
 	camp = OTHER;
 	recycleTimer = 0.0f;
+	recycleTime = RECYCLE_TIME;
 	active = false;
 
 	AddComponent<Collider>(this, this->position, 1.0f);
@@ -28,7 +29,7 @@ void Bullet::Update(float deltaTime) {
 	Object::Update(deltaTime);
 
 	recycleTimer += deltaTime;
-	if (recycleTimer >= RECYCLE_TIME)
+	if (recycleTimer >= recycleTime)
 		Reset();
 }
 
@@ -59,6 +60,11 @@ void Bullet::SetCamp(Camp camp) {
 
 Camp Bullet::GetCamp() {
 	return this->camp;
+}
+
+
+void Bullet::SetRecycleTime(float recycleTime) {
+	this->recycleTime = recycleTime;
 }
 
 

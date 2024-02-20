@@ -7,15 +7,16 @@ enum Camp {
 };
 
 enum EnemyType {
-	NormalEnemy,
-	StrongEnemy,
-	ExpertEnemy,
+	Normal,
+	Strong,
+	Expert,
 	Boss
 };
 
 enum BulletType
 {
-	PlayerBullet,
-	EnemyBullet,
-	BossBullet,
+	ArrowBullet,
+	ThornBullet,
+	CircleBullet,
+	ShurikenBullet
 };

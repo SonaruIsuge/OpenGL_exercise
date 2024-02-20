@@ -138,8 +138,11 @@
     <ClCompile Include="GameObjects\Bullet.cpp" />
     <ClCompile Include="GameObjects\Character.cpp" />
     <ClCompile Include="GameObjects\Enemy\Enemy.cpp" />
+    <ClCompile Include="GameObjects\Enemy\NormalEnemy.cpp" />
+    <ClCompile Include="GameObjects\Enemy\StrongEnemy.cpp" />
     <ClCompile Include="GameObjects\Object.cpp" />
     <ClCompile Include="GameObjects\Player.cpp" />
+    <ClCompile Include="math.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Shapes\GDShape.cpp" />
     <ClCompile Include="Shapes\Shape.cpp" />
@@ -151,6 +154,7 @@
     <ClCompile Include="Systems\Time.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Tools\GeometryFileReader.cpp" />
+    <ClCompile Include="Tools\Random.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\Collider.h" />
@@ -160,8 +164,11 @@
     <ClInclude Include="GameObjects\Bullet.h" />
     <ClInclude Include="GameObjects\Character.h" />
     <ClInclude Include="GameObjects\Enemy\Enemy.h" />
+    <ClInclude Include="GameObjects\Enemy\NormalEnemy.h" />
+    <ClInclude Include="GameObjects\Enemy\StrongEnemy.h" />
     <ClInclude Include="GameObjects\Object.h" />
     <ClInclude Include="GameObjects\Player.h" />
+    <ClInclude Include="math.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Shapes\GDShape.h" />
     <ClInclude Include="Shapes\Shape.h" />
@@ -175,17 +182,20 @@
     <ClInclude Include="Tools\GameSettings.h" />
     <ClInclude Include="Tools\GeometryFileReader.h" />
     <ClInclude Include="Tools\ObjectPool.h" />
+    <ClInclude Include="Tools\Random.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\awesomeface.png" />
     <Image Include="Images\container.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GeometryData\BulletA.gd" />
+    <None Include="GeometryData\Shuriken.gd" />
+    <None Include="GeometryData\Arrow.gd" />
     <None Include="GeometryData\Circle.gd" />
-    <None Include="GeometryData\NormalEnemyShape.gd" />
-    <None Include="GeometryData\PlayerShape.gd" />
+    <None Include="GeometryData\Rhombic.gd" />
+    <None Include="GeometryData\Plane.gd" />
     <None Include="GeometryData\Quad.gd" />
+    <None Include="GeometryData\Thorn.gd" />
     <None Include="GeometryData\Triangle.gd" />
     <None Include="Shader\fragment.frag" />
     <None Include="Shader\Simple2D.frag" />

@@ -5,22 +5,24 @@
 
 
 class Enemy : public Character {
+private:
+
 protected:
 	Object* target;
 	bool active;
+	vec3 recordInitPos;
 
-	void UpdateShooting(float deltaTime);
-	void UpdateMove(float deltaTime);
+	virtual void UpdateShooting(float deltaTime) { };
+	virtual void UpdateMove(float deltaTime) { };
 	
 public:
-	ShootingPart* shootingPart;
 
 	Enemy(Shape* shape, Camera* camera, Object* fireTarget);
-	~Enemy();
+	virtual ~Enemy();
 
-	void Init(vec3 position);
+	virtual void Init() { };
 	void Update(float deltaTime);
-	void Dead();
+	void Instantiate(vec3 position);
 	void SetActive(bool active);
 	bool IsActive();
 };

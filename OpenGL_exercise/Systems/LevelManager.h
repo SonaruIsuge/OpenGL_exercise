@@ -7,6 +7,8 @@ private:
 	Player& playerRef;
 	Camera& cameraRef;
 
+	int enemyKillCount;
+
 public:
 
 	LevelManager(Player& player, Camera& camera);
@@ -14,4 +16,5 @@ public:
 
 	void Init();
 	void Update(float deltaTime);
+	void KillEnemy();
 };

@@ -11,6 +11,7 @@ protected:
 	Camp camp;
 
 	float recycleTimer;
+	float recycleTime;
 	bool active;
 
 
@@ -25,6 +26,7 @@ public:
 	void Reset();
 	void SetCamp(Camp camp);
 	Camp GetCamp();
+	void SetRecycleTime(float recycleTime);
 	int GetAttackValue();
 	bool IsActive();
 };

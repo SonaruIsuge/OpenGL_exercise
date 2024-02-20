@@ -10,7 +10,8 @@ private:
 	float coolDownTime;
 	bool isShoot;
 
-	void HandleCollide();
+	float newRecycleTime;
+	bool changeRecycleTime;
 
 public:
 	float coolDownTimer;
@@ -21,4 +22,5 @@ public:
 	void Fire(Camp camp, vec3 position, vec3 direction, float speed, int damage);
 	void Fire(Object& target, Camp camp, vec3 position, float speed, int damage);
 	void Update(float deltaTime);
+	void SetBulletRecycleTime(float recycleTime);
 };

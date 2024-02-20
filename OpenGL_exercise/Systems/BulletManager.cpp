@@ -1,5 +1,6 @@
 #include "BulletManager.h"
 #include "EnemyManager.h"
+#include "../Shapes/GDShape.h"
 
 BulletManager* BulletManager::_instance = nullptr;
 
@@ -67,7 +68,7 @@ void BulletManager::Update(float deltaTime) {
 			if (!currentNode->data->IsActive()) {
 				pool.second->Recycle(currentNode);
 			}
-
+			
 			currentNode->data->Update(deltaTime);
 			CheckCollide(*currentNode->data);
 			currentNode = currentNode->next;

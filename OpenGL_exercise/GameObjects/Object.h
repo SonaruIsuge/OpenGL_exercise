@@ -61,4 +61,16 @@ public:
 			}),
 			components.end());
 	}
+
+	template <IsComponent T>
+	std::vector<T*> GetComponents() {
+		std::vector<T*> componentsOfType;
+
+		for (auto&& component : components) {
+			if (typeid(*component) == typeid(T))
+				componentsOfType.emplace_back(static_cast<T*>(component.get()));
+		}
+
+		return componentsOfType;
+	}
 };

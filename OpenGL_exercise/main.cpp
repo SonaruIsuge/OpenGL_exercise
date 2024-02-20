@@ -59,7 +59,7 @@ int main()
 	while (!glfwWindowShouldClose(window)) {
 		
 		glfwPollEvents();
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		gameTime->Update();
@@ -84,7 +84,8 @@ void initGame() {
 	camera = new Camera(ORTHOGONAL);
 	gameTime = new Time;
 	input = new Input;
-	player = new Player(new GDShape("GeometryData/PlayerShape.gd"), camera, input);
+	player = new Player(new GDShape("GeometryData/Plane.gd"), camera, input);
+	player->position = vec3(0, -9, 0);
 }
 
 

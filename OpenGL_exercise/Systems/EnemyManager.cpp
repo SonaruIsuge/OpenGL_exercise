@@ -1,5 +1,5 @@
 #include "EnemyManager.h"
-
+#include "LevelManager.h"
 
 EnemyManager* EnemyManager::_instance = nullptr;
 
@@ -14,6 +14,7 @@ EnemyManager* EnemyManager::GetInstance() {
 
 EnemyManager::EnemyManager() {
 	player = nullptr;
+	deadEnemyCount = 0;
 }
 
 
@@ -39,7 +40,9 @@ void EnemyManager::AddEnemyTypeToPool(EnemyType type, Enemy& prototype, int numI
 
 	allTypeEnemies[type] = std::make_unique<ObjectPool<Enemy>>();
 	for (int i = 0; i < numInPool; i++) {
+		
 		Enemy* newEnemy = new Enemy(new Shape(*prototype.shape), prototype.camera, this->player);
+		
 		allTypeEnemies[type]->AddNode(newEnemy);
 	}
 }
@@ -68,6 +71,7 @@ void EnemyManager::Update(float deltaTime) {
 			if (currentNode->data->IsDead()) {
 				currentNode->data->SetActive(false);
 				// Count dead enemy number
+				deadEnemyCount++;
 			}
 			if (!currentNode->data->IsActive()) {
 				pool.second->Recycle(currentNode);
@@ -77,11 +81,15 @@ void EnemyManager::Update(float deltaTime) {
 			currentNode->data->Update(deltaTime);
 			currentNode = currentNode->next;
 		}
-		std::cout << pool.second.get()->GetUsingLength() << ", " << pool.second.get()->GetLength() << std::endl;
 	}
 }
 
 
 void EnemyManager::Destroy() {
 	if (_instance != nullptr) delete _instance;
+}
+
+
+int EnemyManager::GetKilledEnemyCount() {
+	return deadEnemyCount;
 }
