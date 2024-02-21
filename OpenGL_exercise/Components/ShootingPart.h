@@ -19,8 +19,8 @@ public:
 	ShootingPart(BulletType bulletType, float coolDownTime);
 	~ShootingPart();
 
-	void Fire(Camp camp, vec3 position, vec3 direction, float speed, int damage);
-	void Fire(Object& target, Camp camp, vec3 position, float speed, int damage);
+	bool Fire(Camp camp, vec3 position, vec3 direction, float speed, int damage);
+	bool Fire(Object& target, Camp camp, vec3 position, float speed, int damage);
 	void Update(float deltaTime);
 	void SetBulletRecycleTime(float recycleTime);
 };

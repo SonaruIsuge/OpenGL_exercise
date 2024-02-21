@@ -7,9 +7,13 @@
 class Player : public Character {
 private:
 	Input* input;
-	ShootingPart* shootingPart;
+	std::vector<ShootingPart*> shootingParts;
+	int killedEnemy;
+	int level;
 
 	void HandleInput(float deltaTime);
+	void LevelUp();
+	void Shooting();
 
 public:
 
@@ -18,4 +22,5 @@ public:
 	~Player();
 
 	void Update(float deltaTime);
+	void KillEnemy();
 };

@@ -18,5 +18,6 @@ enum BulletType
 	ArrowBullet,
 	ThornBullet,
 	CircleBullet,
-	ShurikenBullet
+	ShurikenBullet,
+	NeedleBullet
 };

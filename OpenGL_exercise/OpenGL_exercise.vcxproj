@@ -138,6 +138,7 @@
     <ClCompile Include="GameObjects\Bullet.cpp" />
     <ClCompile Include="GameObjects\Character.cpp" />
     <ClCompile Include="GameObjects\Enemy\Enemy.cpp" />
+    <ClCompile Include="GameObjects\Enemy\ExpertEnemy.cpp" />
     <ClCompile Include="GameObjects\Enemy\NormalEnemy.cpp" />
     <ClCompile Include="GameObjects\Enemy\StrongEnemy.cpp" />
     <ClCompile Include="GameObjects\Object.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="GameObjects\Bullet.h" />
     <ClInclude Include="GameObjects\Character.h" />
     <ClInclude Include="GameObjects\Enemy\Enemy.h" />
+    <ClInclude Include="GameObjects\Enemy\ExpertEnemy.h" />
     <ClInclude Include="GameObjects\Enemy\NormalEnemy.h" />
     <ClInclude Include="GameObjects\Enemy\StrongEnemy.h" />
     <ClInclude Include="GameObjects\Object.h" />
@@ -189,6 +191,7 @@
     <Image Include="Images\container.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GeometryData\Needle.gd" />
     <None Include="GeometryData\Shuriken.gd" />
     <None Include="GeometryData\Arrow.gd" />
     <None Include="GeometryData\Circle.gd" />

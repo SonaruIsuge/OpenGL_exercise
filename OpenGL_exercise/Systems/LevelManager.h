@@ -7,7 +7,14 @@ private:
 	Player& playerRef;
 	Camera& cameraRef;
 
-	int enemyKillCount;
+	int currentWave;
+	float coolDownTimer;
+	int generateEnemyCount;
+
+	void ChangeWave(int wave);
+	void wave1(float dt, int enemyNum, float enemyInitCoolDown);
+	void wave2(float dt, int enemyNum, float enemyInitCoolDown);
+	void wave3(float dt, int enemyNum, float enemyInitCoolDown);
 
 public:
 
@@ -16,5 +23,4 @@ public:
 
 	void Init();
 	void Update(float deltaTime);
-	void KillEnemy();
 };

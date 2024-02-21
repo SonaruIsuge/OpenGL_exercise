@@ -18,11 +18,11 @@ ShootingPart::~ShootingPart() {
 }
 
 
-void ShootingPart::Fire(Camp camp, vec3 position, vec3 direction, float speed, int damage) {
-	if (isShoot) return;
+bool ShootingPart::Fire(Camp camp, vec3 position, vec3 direction, float speed, int damage) {
+	if (isShoot) return false;
 
 	Bullet* bullet = BulletManager::GetInstance()->RequestBullet(bulletType);
-	if (bullet == nullptr) return;
+	if (bullet == nullptr) return false;
 
 	float angle = gameMath::angleWithSign(vec3(0, 1, 0), direction);
 	bullet->rotation = vec3(0, 0, degrees(angle));
@@ -37,12 +37,13 @@ void ShootingPart::Fire(Camp camp, vec3 position, vec3 direction, float speed, i
 	bullet->Fire(damage, position, direction, speed);
 
 	isShoot = true;
+	return true;
 }
 
 
-void ShootingPart::Fire(Object& target, Camp camp, vec3 position, float speed, int damage) {
+bool ShootingPart::Fire(Object& target, Camp camp, vec3 position, float speed, int damage) {
 	vec3 direction = normalize(target.position - position);
-	Fire(camp, position, direction, speed, damage);
+	return Fire(camp, position, direction, speed, damage);
 }
 
 

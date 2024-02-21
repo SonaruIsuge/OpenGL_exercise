@@ -72,6 +72,7 @@ void EnemyManager::Update(float deltaTime) {
 				currentNode->data->SetActive(false);
 				// Count dead enemy number
 				deadEnemyCount++;
+				player->KillEnemy();
 			}
 			if (!currentNode->data->IsActive()) {
 				pool.second->Recycle(currentNode);

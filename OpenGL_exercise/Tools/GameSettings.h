@@ -23,11 +23,20 @@ const int NORMAL_E_HEALTH = 50;
 const int NORMAL_E_DAMAGE = 2;
 const float NORMAL_E_BULLET_COOLDOWN = 1.5f;
 const float NORMAL_E_BULLET_SPEED = 8.0f;
-const glm::vec4 NORMAL_E_COLOR = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
+const glm::vec4 NORMAL_E_COLOR = glm::vec4(0.7f, 0.0f, 0.0f, 1.0f);
 
 const float STRONG_E_MOVESPEED = 1.0f;
-const int STRONG_E_HEALTH = 100;
+const int STRONG_E_HEALTH = 150;
 const int STRONG_E_DAMAGE = 2;
 const float STRONG_E_BULLET_COOLDOWN = 2.0f;
 const float STRONG_E_BULLET_SPEED = 12.0f;
-const glm::vec4 STRONG_E_COLOR = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
+const glm::vec4 STRONG_E_COLOR = glm::vec4(0.85f, 0.0f, 0.0f, 1.0f);
+
+const float EXPERT_E_MOVESPEED = 1.0f;
+const int EXPERT_E_HEALTH = 400;
+const int EXPERT_E_DAMAGE = 2;
+const float EXPERT_E_BULLET_COOLDOWN = 3.0f;
+const float EXPERT_E_BULLET_SHORT_COOLDOWN = 0.4f;
+const int EXPERT_E_BULLET_WAVE_PER_COOLDOWN = 5;
+const float EXPERT_E_BULLET_SPEED = 2.0f;
+const glm::vec4 EXPERT_E_COLOR = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);

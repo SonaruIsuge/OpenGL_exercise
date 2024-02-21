@@ -108,6 +108,9 @@
     <ClCompile Include="GameObjects\Enemy\NormalEnemy.cpp">
       <Filter>來源檔案\GameObjects\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="GameObjects\Enemy\ExpertEnemy.cpp">
+      <Filter>來源檔案\GameObjects\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -188,6 +191,9 @@
     <ClInclude Include="GameObjects\Enemy\NormalEnemy.h">
       <Filter>來源檔案\GameObjects\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="GameObjects\Enemy\ExpertEnemy.h">
+      <Filter>來源檔案\GameObjects\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\awesomeface.png">
@@ -232,6 +238,9 @@
       <Filter>來源檔案\GeometryData</Filter>
     </None>
     <None Include="GeometryData\Thorn.gd">
+      <Filter>來源檔案\GeometryData</Filter>
+    </None>
+    <None Include="GeometryData\Needle.gd">
       <Filter>來源檔案\GeometryData</Filter>
     </None>
   </ItemGroup>
