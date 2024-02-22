@@ -53,6 +53,11 @@ int Character::GetHealth() {
 }
 
 
+float Character::GetHealth01() {
+	return (float)remainHealth / (float)health;
+}
+
+
 bool Character::IsDead() {
 	return dead;
 }

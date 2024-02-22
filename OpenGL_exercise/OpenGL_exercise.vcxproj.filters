@@ -40,6 +40,9 @@
     <Filter Include="來源檔案\GameObjects\Enemy">
       <UniqueIdentifier>{9f5dab05-29dc-4ac8-8858-776447395883}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\StateMachine">
+      <UniqueIdentifier>{9f2d3de0-50cb-45d4-aac2-cbe6bbefe3b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -110,6 +113,21 @@
     </ClCompile>
     <ClCompile Include="GameObjects\Enemy\ExpertEnemy.cpp">
       <Filter>來源檔案\GameObjects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects\Enemy\Boss.cpp">
+      <Filter>來源檔案\GameObjects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine\State.cpp">
+      <Filter>來源檔案\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine\BossNormalState.cpp">
+      <Filter>來源檔案\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine\BossAdvanceState.cpp">
+      <Filter>來源檔案\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine\BossLastState.cpp">
+      <Filter>來源檔案\StateMachine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +212,21 @@
     <ClInclude Include="GameObjects\Enemy\ExpertEnemy.h">
       <Filter>來源檔案\GameObjects\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="GameObjects\Enemy\Boss.h">
+      <Filter>來源檔案\GameObjects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine\State.h">
+      <Filter>來源檔案\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine\BossNormalState.h">
+      <Filter>來源檔案\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine\BossAdvanceState.h">
+      <Filter>來源檔案\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine\BossLastState.h">
+      <Filter>來源檔案\StateMachine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\awesomeface.png">
@@ -241,6 +274,9 @@
       <Filter>來源檔案\GeometryData</Filter>
     </None>
     <None Include="GeometryData\Needle.gd">
+      <Filter>來源檔案\GeometryData</Filter>
+    </None>
+    <None Include="GeometryData\Boss.gd">
       <Filter>來源檔案\GeometryData</Filter>
     </None>
   </ItemGroup>

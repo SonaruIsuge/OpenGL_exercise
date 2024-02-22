@@ -47,6 +47,20 @@ void Player::KillEnemy() {
 }
 
 
+int Player::GetLevel() {
+	return level;
+}
+
+
+int Player::GetTotalFireCount() {
+	int result = 0;
+	for (auto& shootingPart : shootingParts) {
+		result += shootingPart->GetTotalFireCount();
+	}
+	return result;
+}
+
+
 void Player::HandleInput(float deltaTime) {
 
 	if (this->input->IsKeyPress(GLFW_KEY_W))
@@ -57,7 +71,8 @@ void Player::HandleInput(float deltaTime) {
 		position += vec3(-1.0f, 0.0f, 0.0f) * PLAYER_MOVESPEED * deltaTime;
 	if (this->input->IsKeyPress(GLFW_KEY_D))
 		position += vec3(1.0f, 0.0f, 0.0f) * PLAYER_MOVESPEED * deltaTime;
-
+	position.x = clamp(position.x, -VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_WIDTH);
+	position.y = clamp(position.y, -VIEWPORT_HALF_HEIGHT, VIEWPORT_HALF_HEIGHT);
 	if (this->input->IsMouseClick(GLFW_MOUSE_BUTTON_1)) {
 		Shooting();
 	}

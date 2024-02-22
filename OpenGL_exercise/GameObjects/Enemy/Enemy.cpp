@@ -23,8 +23,8 @@ void Enemy::Instantiate(vec3 position) {
 void Enemy::Update(float deltaTime) {
 	if (!active) return;
 
-	UpdateShooting(deltaTime);
 	UpdateMove(deltaTime);
+	UpdateShooting(deltaTime);
 
 	Character::Update(deltaTime);
 }

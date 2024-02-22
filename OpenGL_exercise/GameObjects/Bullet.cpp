@@ -1,5 +1,6 @@
 #include "Bullet.h"
 #include "../Tools/GameSettings.h"
+#include "../math.h"
 
 
 Bullet::Bullet(Shape* shape, Camera* camera) : Object(shape, camera) {
@@ -12,7 +13,7 @@ Bullet::Bullet(Shape* shape, Camera* camera) : Object(shape, camera) {
 	recycleTime = RECYCLE_TIME;
 	active = false;
 
-	AddComponent<Collider>(this, this->position, 1.0f);
+	AddComponent<Collider>(this, this->position, shape->boundRadius);
 	collider = GetComponent<Collider>();
 }
 
@@ -29,6 +30,7 @@ void Bullet::Update(float deltaTime) {
 	Object::Update(deltaTime);
 
 	recycleTimer += deltaTime;
+	//if (gameMath::abs(position.x) > VIEWPORT_HALF_WIDTH + 1 || gameMath::abs(position.y) > VIEWPORT_HALF_HEIGHT + 1)
 	if (recycleTimer >= recycleTime)
 		Reset();
 }

@@ -35,6 +35,7 @@ GDShape::GDShape(const GDShape& shape) : Shape(shape) {
 		points[i] = shape.points[i];
 		colors[i] = shape.colors[i];
 	}
+	boundRadius = shape.boundRadius;
 
 	CreateBuffers();
 

@@ -23,4 +23,7 @@ public:
 
 	void Update(float deltaTime);
 	void KillEnemy();
+
+	int GetLevel();
+	int GetTotalFireCount();
 };

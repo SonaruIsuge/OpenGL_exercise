@@ -13,6 +13,8 @@ private:
 	float newRecycleTime;
 	bool changeRecycleTime;
 
+	int totalFireCount;
+
 public:
 	float coolDownTimer;
 
@@ -23,4 +25,7 @@ public:
 	bool Fire(Object& target, Camp camp, vec3 position, float speed, int damage);
 	void Update(float deltaTime);
 	void SetBulletRecycleTime(float recycleTime);
+	void ChangeCoolDown(float coolDown);
+	void ChangeBulletType(BulletType type);
+	int GetTotalFireCount();
 };

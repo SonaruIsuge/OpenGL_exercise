@@ -5,6 +5,7 @@
 class NormalEnemy : public Enemy {
 private:
 	ShootingPart* shootingPart;
+	float xMove;
 
 	void UpdateShooting(float deltaTime) override;
 	void UpdateMove(float deltaTime) override;

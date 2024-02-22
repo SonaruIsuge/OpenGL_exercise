@@ -137,6 +137,7 @@
     <ClCompile Include="Components\ShootingPart.cpp" />
     <ClCompile Include="GameObjects\Bullet.cpp" />
     <ClCompile Include="GameObjects\Character.cpp" />
+    <ClCompile Include="GameObjects\Enemy\Boss.cpp" />
     <ClCompile Include="GameObjects\Enemy\Enemy.cpp" />
     <ClCompile Include="GameObjects\Enemy\ExpertEnemy.cpp" />
     <ClCompile Include="GameObjects\Enemy\NormalEnemy.cpp" />
@@ -147,6 +148,10 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Shapes\GDShape.cpp" />
     <ClCompile Include="Shapes\Shape.cpp" />
+    <ClCompile Include="StateMachine\BossAdvanceState.cpp" />
+    <ClCompile Include="StateMachine\BossLastState.cpp" />
+    <ClCompile Include="StateMachine\BossNormalState.cpp" />
+    <ClCompile Include="StateMachine\State.cpp" />
     <ClCompile Include="Systems\BulletManager.cpp" />
     <ClCompile Include="Systems\Camera.cpp" />
     <ClCompile Include="Systems\EnemyManager.cpp" />
@@ -164,6 +169,7 @@
     <ClInclude Include="Debug.h" />
     <ClInclude Include="GameObjects\Bullet.h" />
     <ClInclude Include="GameObjects\Character.h" />
+    <ClInclude Include="GameObjects\Enemy\Boss.h" />
     <ClInclude Include="GameObjects\Enemy\Enemy.h" />
     <ClInclude Include="GameObjects\Enemy\ExpertEnemy.h" />
     <ClInclude Include="GameObjects\Enemy\NormalEnemy.h" />
@@ -174,6 +180,10 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Shapes\GDShape.h" />
     <ClInclude Include="Shapes\Shape.h" />
+    <ClInclude Include="StateMachine\BossAdvanceState.h" />
+    <ClInclude Include="StateMachine\BossLastState.h" />
+    <ClInclude Include="StateMachine\BossNormalState.h" />
+    <ClInclude Include="StateMachine\State.h" />
     <ClInclude Include="Systems\BulletManager.h" />
     <ClInclude Include="Systems\Camera.h" />
     <ClInclude Include="Systems\EnemyManager.h" />
@@ -191,6 +201,7 @@
     <Image Include="Images\container.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GeometryData\Boss.gd" />
     <None Include="GeometryData\Needle.gd" />
     <None Include="GeometryData\Shuriken.gd" />
     <None Include="GeometryData\Arrow.gd" />

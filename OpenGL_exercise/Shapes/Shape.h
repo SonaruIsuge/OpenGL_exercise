@@ -53,4 +53,5 @@ public:
 	void SetViewMatrix(mat4& viewMat);
 	void SetProjectionMatrix(mat4& projMat);
 	vec3 GetWorldPosition();
+	float GetBoundRadius();
 };

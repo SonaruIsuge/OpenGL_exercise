@@ -154,6 +154,11 @@ vec3 Shape::GetWorldPosition() {
 }
 
 
+float Shape::GetBoundRadius() {
+	return boundRadius;
+}
+
+
 Shape::Shape(const Shape& shape) {
 	shader = nullptr;
 	VAO = 0;
@@ -180,7 +185,7 @@ Shape::Shape(const Shape& shape) {
 		points[i] = shape.points[i];
 		colors[i] = shape.colors[i];
 	}
-
+	boundRadius = shape.boundRadius;
 	CreateBuffers();
 
 	if (shape.parent != nullptr) {

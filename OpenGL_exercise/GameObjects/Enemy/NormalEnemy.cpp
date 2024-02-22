@@ -1,5 +1,6 @@
 #include "NormalEnemy.h"
 #include "../../Tools/GameSettings.h"
+#include "../../Tools/Random.h"
 
 NormalEnemy::NormalEnemy(Shape* shape, Camera* camera, Object* fireTarget) : Enemy(shape, camera, fireTarget) {
 	Init();
@@ -17,6 +18,9 @@ void NormalEnemy::Init() {
 
 	AddComponent<ShootingPart>(CircleBullet, NORMAL_E_BULLET_COOLDOWN);
 	shootingPart = GetComponent<ShootingPart>();
+
+	Random random;
+	xMove = random.randFloat(-VIEWPORT_HALF_WIDTH / 2, VIEWPORT_HALF_WIDTH / 2);
 }
 
 
@@ -26,7 +30,7 @@ void NormalEnemy::UpdateShooting(float deltaTime) {
 
 
 void NormalEnemy::UpdateMove(float deltaTime) {
-	this->position.y += -NORMAL_E_MOVESPEED * deltaTime;
+	this->position += normalize(vec3(xMove, -VIEWPORT_HALF_WIDTH, 0)) * NORMAL_E_MOVESPEED * deltaTime;
 
 	if (this->position.y < -VIEWPORT_HALF_HEIGHT * 1.2f) {
 		active = false;

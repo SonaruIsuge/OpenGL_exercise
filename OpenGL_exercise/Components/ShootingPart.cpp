@@ -10,6 +10,8 @@ ShootingPart::ShootingPart(BulletType bulletType, float coolDownTime) : bulletTy
 
 	newRecycleTime = 0.0f;
 	changeRecycleTime = false;
+
+	totalFireCount = 0;
 }
 
 
@@ -37,6 +39,7 @@ bool ShootingPart::Fire(Camp camp, vec3 position, vec3 direction, float speed, i
 	bullet->Fire(damage, position, direction, speed);
 
 	isShoot = true;
+	totalFireCount++;
 	return true;
 }
 
@@ -64,4 +67,19 @@ void ShootingPart::Update(float deltaTime) {
 void ShootingPart::SetBulletRecycleTime(float recycleTime) {
 	newRecycleTime = recycleTime;
 	changeRecycleTime = true;
+}
+
+
+void ShootingPart::ChangeCoolDown(float coolDown) {
+	this->coolDownTime = coolDown;
+}
+
+
+void ShootingPart::ChangeBulletType(BulletType type) {
+	bulletType = type;
+}
+
+
+int ShootingPart::GetTotalFireCount() {
+	return totalFireCount;
 }

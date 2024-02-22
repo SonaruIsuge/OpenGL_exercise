@@ -26,5 +26,6 @@ public:
 
 	int GetHealth();
 	int GetAttackValue();
+	float GetHealth01();
 	bool IsDead();
 };

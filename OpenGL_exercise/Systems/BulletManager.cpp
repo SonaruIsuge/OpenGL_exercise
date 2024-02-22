@@ -62,6 +62,9 @@ void BulletManager::Update(float deltaTime) {
 
 	for (auto& pool : allTypeBullets) {
 		currentNode = pool.second->using_first;
+		if (currentNode != nullptr)
+			std::cout << pool.second->GetUsingLength() << " : " << pool.second->GetLength() << std::endl;
+
 		while (currentNode != nullptr) {
 
 			// handle inactive bullet;
@@ -73,6 +76,7 @@ void BulletManager::Update(float deltaTime) {
 			CheckCollide(*currentNode->data);
 			currentNode = currentNode->next;
 		}
+		
 	}
 }
 

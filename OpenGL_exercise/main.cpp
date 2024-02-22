@@ -34,6 +34,8 @@ Player* player;
 
 bool set_environment();
 void initGame();
+void endGame(bool gameOver, bool gameClear);
+void printGameData(bool gameOver, bool gameClear);
 void destroy();
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 void mouse_callback(GLFWwindow* window, double xPos, double yPos);
@@ -57,10 +59,16 @@ int main()
 
 	// Game loop
 	while (!glfwWindowShouldClose(window)) {
-		
+		// first check if game over
+		if (LevelManager::GAME_OVER) {
+			endGame(LevelManager::GAME_OVER, levelManager.CheckGameClear());
+			break;
+		}
+
 		glfwPollEvents();
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
 
 		gameTime->Update();
 		levelManager.Update(gameTime->deltaTime);
@@ -72,13 +80,10 @@ int main()
 		glfwSwapBuffers(window);
 	}
 
-	destroy();
-
 	// Terminate GLFW, clearing any resources allocated by GLFW.
 	glfwTerminate();
 	return 0;
 }
-
 
 void initGame() {
 	camera = new Camera(ORTHOGONAL);
@@ -88,11 +93,35 @@ void initGame() {
 	player->position = vec3(0, -9, 0);
 }
 
+void endGame(bool gameOver, bool gameClear) {
+	printGameData(gameOver, gameClear);
+	destroy();
+	glfwSetWindowShouldClose(window, GL_TRUE);
+}
+
+
+void printGameData(bool gameOver, bool gameClear) {
+	if(gameClear)
+		std::cout << ">>>>>>>>>>GAME CLEAR<<<<<<<<<<" << std::endl;
+
+	if (gameOver)
+		std::cout << ">>>>>>>>>>GAME OVER<<<<<<<<<<" << std::endl;
+	else
+		std::cout << "Player Health: " << player->GetHealth() << std::endl;
+
+	std::cout << "Killed Enemy: " << EnemyManager::GetInstance()->GetKilledEnemyCount() << std::endl;
+	std::cout << "Player Level: " << player->GetLevel() << std::endl;
+	std::cout << "Player Fire Number: " << player->GetTotalFireCount() << std::endl;
+}
+
+
+
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {
-
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+		printGameData(false, false);
 		glfwSetWindowShouldClose(window, GL_TRUE);
+		return;
 	}
 
 	input->OnKeyPress(key, action);

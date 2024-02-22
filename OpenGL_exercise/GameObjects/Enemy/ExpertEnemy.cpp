@@ -26,7 +26,7 @@ void ExpertEnemy::Init() {
 
 
 void ExpertEnemy::UpdateMove(float deltaTime) {
-		this->position.y += -EXPERT_E_MOVESPEED * deltaTime;
+	this->position += vec3(0, -EXPERT_E_MOVESPEED * deltaTime, 0);
 
 	if (this->position.y < -VIEWPORT_HALF_HEIGHT * 1.2f) {
 		active = false;

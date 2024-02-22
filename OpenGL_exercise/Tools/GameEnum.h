@@ -10,7 +10,7 @@ enum EnemyType {
 	Normal,
 	Strong,
 	Expert,
-	Boss
+	BossEnemy,
 };
 
 enum BulletType
