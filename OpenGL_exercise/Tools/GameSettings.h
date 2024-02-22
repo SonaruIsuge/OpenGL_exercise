@@ -68,3 +68,9 @@ const float BOSS_LAST_STATE_BULLET_COOLDOWN = 0.5f;
 const float BOSS_SUB_BULLET_COOLDOWN = 1.0f;
 const float BOSS_SUB_SHOOT_PART_MOVE_SPEED = 4.0f;
 const float BOSS_SUB_BULLET_SPEED = 6.0f;
+
+// Background
+const glm::vec4 STAR_COLOR = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+const int STAR_NUMBER = 50;
+const float STAR_MIN_SPEED = 0.5f;
+const float STAR_MAX_SPEED = 2.5f;

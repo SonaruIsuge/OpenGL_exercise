@@ -14,6 +14,7 @@
 #include "Systems/Time.h"
 #include "Systems/Camera.h"
 #include "Systems/Input.h"
+#include "Systems/Background.h"
 #include "Tools/GameSettings.h"
 #include "GameObjects/Player.h"
 #include "Shapes/GDShape.h"
@@ -30,7 +31,7 @@ Time* gameTime;
 Camera* camera;
 Input* input;
 Player* player;
-
+Background* bg;
 
 bool set_environment();
 void initGame();
@@ -60,7 +61,7 @@ int main()
 	// Game loop
 	while (!glfwWindowShouldClose(window)) {
 		// first check if game over
-		if (LevelManager::GAME_OVER) {
+		if (LevelManager::GAME_OVER || levelManager.CheckGameClear() ) {
 			endGame(LevelManager::GAME_OVER, levelManager.CheckGameClear());
 			break;
 		}
@@ -75,6 +76,7 @@ int main()
 		player->Update(gameTime->deltaTime);
 		BulletManager::GetInstance()->Update(gameTime->deltaTime);
 		EnemyManager::GetInstance()->Update(gameTime->deltaTime);
+		bg->Update(gameTime->deltaTime);
 
 		// Swap the screen buffers (Double buffers)
 		glfwSwapBuffers(window);
@@ -91,6 +93,7 @@ void initGame() {
 	input = new Input;
 	player = new Player(new GDShape("GeometryData/Plane.gd"), camera, input);
 	player->position = vec3(0, -9, 0);
+	bg = new Background(camera);
 }
 
 void endGame(bool gameOver, bool gameClear) {

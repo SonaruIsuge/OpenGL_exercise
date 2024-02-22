@@ -30,7 +30,7 @@ void LevelManager::Init() {
 	EnemyManager::GetInstance()->SetPlayerRef(playerRef);
 
 	Bullet arrowBullet(new GDShape("GeometryData/Arrow.gd"), &cameraRef);
-	arrowBullet.SetColor(vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	arrowBullet.SetColor(vec4(0.6f, 1.0f, 1.0f, 1.0f));
 	Bullet thornBullet(new GDShape("GeometryData/Thorn.gd"), &cameraRef);
 	thornBullet.SetColor(vec4(1.0f, 0.9f, 0.2f, 1.0f));
 	Bullet circleBullet(new GDShape("GeometryData/Circle.gd"), &cameraRef);

@@ -129,6 +129,9 @@
     <ClCompile Include="StateMachine\BossLastState.cpp">
       <Filter>來源檔案\StateMachine</Filter>
     </ClCompile>
+    <ClCompile Include="Systems\Background.cpp">
+      <Filter>來源檔案\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -226,6 +229,9 @@
     </ClInclude>
     <ClInclude Include="StateMachine\BossLastState.h">
       <Filter>來源檔案\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Background.h">
+      <Filter>來源檔案\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

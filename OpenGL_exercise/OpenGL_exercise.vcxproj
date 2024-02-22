@@ -152,6 +152,7 @@
     <ClCompile Include="StateMachine\BossLastState.cpp" />
     <ClCompile Include="StateMachine\BossNormalState.cpp" />
     <ClCompile Include="StateMachine\State.cpp" />
+    <ClCompile Include="Systems\Background.cpp" />
     <ClCompile Include="Systems\BulletManager.cpp" />
     <ClCompile Include="Systems\Camera.cpp" />
     <ClCompile Include="Systems\EnemyManager.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="StateMachine\BossLastState.h" />
     <ClInclude Include="StateMachine\BossNormalState.h" />
     <ClInclude Include="StateMachine\State.h" />
+    <ClInclude Include="Systems\Background.h" />
     <ClInclude Include="Systems\BulletManager.h" />
     <ClInclude Include="Systems\Camera.h" />
     <ClInclude Include="Systems\EnemyManager.h" />
