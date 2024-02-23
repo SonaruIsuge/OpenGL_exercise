@@ -13,4 +13,5 @@ public:
 	Time();
 	~Time();
 	void Update();
+	float GetTime();
 };

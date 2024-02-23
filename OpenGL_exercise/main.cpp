@@ -38,6 +38,8 @@ void initGame();
 void endGame(bool gameOver, bool gameClear);
 void printGameData(bool gameOver, bool gameClear);
 void destroy();
+vec3 GetTimeHMS(float time);
+
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 void mouse_callback(GLFWwindow* window, double xPos, double yPos);
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
@@ -115,9 +117,19 @@ void printGameData(bool gameOver, bool gameClear) {
 	std::cout << "Killed Enemy: " << EnemyManager::GetInstance()->GetKilledEnemyCount() << std::endl;
 	std::cout << "Player Level: " << player->GetLevel() << std::endl;
 	std::cout << "Player Fire Number: " << player->GetTotalFireCount() << std::endl;
+	vec3 hms = GetTimeHMS(gameTime->GetTime());
+	std::cout << "Game Time: " << hms.x << ":" << hms.y << ":" << hms.z << std::endl;
 }
 
 
+vec3 GetTimeHMS(float time) {
+	vec3 hms = vec3(0.0f);
+	float sec = (int)time % 60 + (time - (int)time);
+	float min = (int)time / 60;
+	float hr = (int)time / 3600;
+	if (min > 60) min =(int)min % 60;
+	return vec3(hr, min, sec);
+}
 
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode) {

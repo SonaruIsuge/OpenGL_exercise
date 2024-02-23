@@ -19,3 +19,8 @@ void Time::Update() {
 	deltaTime = currentTime - lastTime;
 	lastTime = currentTime;
 }
+
+
+float Time::GetTime() {
+	return (float)glfwGetTime();
+}
