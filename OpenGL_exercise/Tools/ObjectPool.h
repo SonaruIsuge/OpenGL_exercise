@@ -82,11 +82,11 @@ void ObjectPool<T>::AddNode(T* data) {
 
 template <class T>
 Node<T>* ObjectPool<T>::GetNode() {
-	// get from unuse list
 	current = first;
 	if (current == nullptr) 
 		return nullptr;
 
+	// get from unuse list
 	first = current->next;
 	if (current == last) last = nullptr;
 
@@ -103,9 +103,8 @@ Node<T>* ObjectPool<T>::GetNode() {
 
 template <class T>
 void ObjectPool<T>::Recycle(Node<T>* node) {
-	if (node == nullptr || node->data == nullptr) {
+	if (node == nullptr || node->data == nullptr) 
 		return;
-	}
 
 	if (node->next != nullptr) {
 		node->next->previous = node->previous;
@@ -129,36 +128,6 @@ void ObjectPool<T>::Recycle(Node<T>* node) {
 		last = node;
 	}
 	node->next = nullptr;
-
-	//// if node is in using list, remove it from list
-	//current = using_first;
-	//Node<T>* previous = nullptr;
-	//while (current != nullptr) {
-	//	if (current == node) {
-	//		if (current == using_first) {
-	//			using_first = current->next;
-	//			break;
-	//		}
-	//		else {
-	//			previous->next = current->next;
-	//			break;
-	//		}
-	//	}
-	//	else {
-	//		previous = current;
-	//		current = current->next;
-	//	}
-	//}
-
-	//if (last == nullptr) {
-	//	// no node in unuse list
-	//	first = last = node;
-	//}
-	//else {
-	//	last->next = node;
-	//	last = node;
-	//}
-	//last->next = nullptr;
 }
 
 

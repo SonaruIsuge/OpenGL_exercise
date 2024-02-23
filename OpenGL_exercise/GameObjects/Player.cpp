@@ -81,7 +81,6 @@ void Player::HandleInput(float deltaTime) {
 
 void Player::LevelUp() {
 	level++;
-	std::cout << "Level Up!" << std::endl;
 	AddComponent<ShootingPart>(ArrowBullet, PLAYER_SHOOTING_COOLDOWN);
 	shootingParts = GetComponents<ShootingPart>();
 }

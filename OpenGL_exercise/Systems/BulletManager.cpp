@@ -62,8 +62,6 @@ void BulletManager::Update(float deltaTime) {
 
 	for (auto& pool : allTypeBullets) {
 		currentNode = pool.second->using_first;
-		if (currentNode != nullptr)
-			std::cout << pool.second->GetUsingLength() << " : " << pool.second->GetLength() << std::endl;
 
 		while (currentNode != nullptr) {
 
