@@ -11,6 +11,9 @@ private:
 	int killedEnemy;
 	int level;
 
+	bool changeDamagedColor;
+	float colorChangeTimer;
+
 	void HandleInput(float deltaTime);
 	void LevelUp();
 	void Shooting();
@@ -26,4 +29,5 @@ public:
 
 	int GetLevel();
 	int GetTotalFireCount();
+	void BeDamaged(int damage);
 };

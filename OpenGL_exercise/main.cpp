@@ -1,6 +1,7 @@
 #define GLEW_STATIC
 
 #include <iostream>
+#include <Windows.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <SOIL2/SOIL2.h>
@@ -21,12 +22,7 @@
 
 using namespace glm;
 
-
-mat4 ORTHO_MAT = ortho(-VIEWPORT_HALF_WIDTH, VIEWPORT_HALF_WIDTH, -VIEWPORT_HALF_HEIGHT, VIEWPORT_HALF_HEIGHT, -1.0f, 1.0f);
-mat4 VIEW_MAT = mat4(1.0f);
-
 GLFWwindow* window = nullptr;
-
 Time* gameTime;
 Camera* camera;
 Input* input;
@@ -69,16 +65,16 @@ int main()
 		}
 
 		glfwPollEvents();
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 
 		gameTime->Update();
+		bg->Update(gameTime->deltaTime);
 		levelManager.Update(gameTime->deltaTime);
-		player->Update(gameTime->deltaTime);
 		BulletManager::GetInstance()->Update(gameTime->deltaTime);
 		EnemyManager::GetInstance()->Update(gameTime->deltaTime);
-		bg->Update(gameTime->deltaTime);
+		player->Update(gameTime->deltaTime);
 
 		// Swap the screen buffers (Double buffers)
 		glfwSwapBuffers(window);
@@ -109,7 +105,7 @@ void printGameData(bool gameOver, bool gameClear) {
 	if(gameClear)
 		std::cout << ">>>>>>>>>>GAME CLEAR<<<<<<<<<<" << std::endl;
 
-	if (gameOver)
+	if (gameOver) 
 		std::cout << ">>>>>>>>>>GAME OVER<<<<<<<<<<" << std::endl;
 	else
 		std::cout << "Player Health: " << player->GetHealth() << std::endl;
@@ -170,7 +166,9 @@ bool set_environment() {
 
 	// Create GLFWwindow object that can use for GLFW's functions
 	window = glfwCreateWindow(WIDTH, HEIGHT, "TestOpenGL", nullptr, nullptr);
-	
+	int max_width = GetSystemMetrics(SM_CXSCREEN);
+	int max_hieght = GetSystemMetrics(SM_CYSCREEN);
+	glfwSetWindowMonitor(window, NULL, (max_width / 2) - (WIDTH / 2), (max_hieght / 2) - (HEIGHT / 2), WIDTH, HEIGHT, GLFW_DONT_CARE);
 	if (window == nullptr) {
 		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
@@ -201,6 +199,7 @@ bool set_environment() {
 void destroy() {
 	EnemyManager::GetInstance()->Destroy();
 	BulletManager::GetInstance()->Destroy();
+	delete bg;
 	delete player;
 	delete input;
 	delete gameTime;

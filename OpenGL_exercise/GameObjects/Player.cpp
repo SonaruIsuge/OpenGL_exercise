@@ -8,6 +8,8 @@ Player::Player(Shape* shape, Camera* camera, Input* input) : Character(shape, ca
 	camp = PLAYER;
 	level = 1;
 	killedEnemy = 0;
+	changeDamagedColor = false;
+	colorChangeTimer = 0.0f;
 
 	SetInitialData(PLAYER_HEALTH, PLAYER_ATTACK);
 	SetColor(PLAYER_COLOR);
@@ -26,6 +28,18 @@ void Player::Update(float deltaTime) {
 	HandleInput(deltaTime);
 
 	Character::Update(deltaTime);
+	
+	// Change color when be hit
+	if (changeDamagedColor) {
+		SetColor(PLAYER_GET_DAMAGE_COLOR);
+		colorChangeTimer += deltaTime;
+		
+		if (colorChangeTimer > 0.1f) {
+			SetColor(PLAYER_COLOR);
+			changeDamagedColor = false;
+			colorChangeTimer = 0;
+		}
+	}
 }
 
 
@@ -34,11 +48,11 @@ void Player::KillEnemy() {
 
 	switch (level) {
 	case 1:
-		if (killedEnemy >= 15)
+		if (killedEnemy >= 20)
 			LevelUp();
 		break;
 	case 2:
-		if (killedEnemy >= 32)
+		if (killedEnemy >= 42)
 			LevelUp();
 		break;
 	default:
@@ -101,4 +115,12 @@ void Player::Shooting() {
 		shootingParts[2]->Fire(this->camp, position + vec3(-0.3f, 0.5f, 0), vec3(0, 1, 0), PLAYER_BULLET_SPEED, PLAYER_ATTACK);
 		break;
 	}
+}
+
+
+void Player::BeDamaged(int damage) {
+	Character::BeDamaged(damage);
+
+	changeDamagedColor = true;
+	colorChangeTimer = 0;
 }

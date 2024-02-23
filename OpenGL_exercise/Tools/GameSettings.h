@@ -16,6 +16,7 @@ const int PLAYER_ATTACK = 10;
 const float PLAYER_SHOOTING_COOLDOWN = 0.1f;
 const float PLAYER_BULLET_SPEED = 10.0f;
 const glm::vec4 PLAYER_COLOR = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
+const glm::vec4 PLAYER_GET_DAMAGE_COLOR = glm::vec4(1.0f, 0.3f, 0.3f, 1.0f);
 
 // Enemy
 const float NORMAL_E_MOVESPEED = 4.0f;

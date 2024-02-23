@@ -30,6 +30,7 @@ void Bullet::Update(float deltaTime) {
 	Object::Update(deltaTime);
 
 	recycleTimer += deltaTime;
+	// TODO: Change reset determine by using position
 	//if (gameMath::abs(position.x) > VIEWPORT_HALF_WIDTH + 1 || gameMath::abs(position.y) > VIEWPORT_HALF_HEIGHT + 1)
 	if (recycleTimer >= recycleTime)
 		Reset();

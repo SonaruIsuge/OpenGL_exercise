@@ -13,7 +13,7 @@ Random random;
 bool generateBoss = false;
 
 LevelManager::LevelManager(Player& player, Camera& camera) : playerRef(player), cameraRef(camera) {
-	currentWave = 1;
+	currentWave = 0;
 	coolDownTimer = 0.0f;
 	generateEnemyCount = 0;
 	boss = nullptr;
@@ -65,6 +65,9 @@ void LevelManager::Update(float deltaTime) {
 	}
 	
 	switch (currentWave) {
+	case 0:
+		prepareTime(deltaTime, 3.0f);
+		break;
 	case 1:
 		wave1(deltaTime, 30, 1.2f);
 		break;
@@ -82,6 +85,22 @@ void LevelManager::Update(float deltaTime) {
 }
 
 
+void LevelManager::ChangeWave(int wave) {
+	this->currentWave = wave;
+	generateEnemyCount = 0;
+	coolDownTimer = 0;
+}
+
+
+void LevelManager::prepareTime(float dt, float time) {
+	if (coolDownTimer >= time) {
+		ChangeWave(1);
+		return;
+	}
+
+	coolDownTimer += dt;
+}
+
 
 void LevelManager::wave1(float dt, int enemyNum, float enemyInitCoolDown) {
 	if (generateEnemyCount == enemyNum) {
@@ -96,13 +115,6 @@ void LevelManager::wave1(float dt, int enemyNum, float enemyInitCoolDown) {
 		generateEnemyCount++;
 		coolDownTimer -= enemyInitCoolDown;
 	}
-}
-
-
-void LevelManager::ChangeWave(int wave) {
-	this->currentWave = wave;
-	generateEnemyCount = 0;
-	coolDownTimer = 0;
 }
 
 
@@ -159,4 +171,10 @@ void LevelManager::BossFight(float dt, float breakTime) {
 
 bool LevelManager::CheckGameClear() {
 	return boss != nullptr && boss->IsDead();
+}
+
+
+int LevelManager::GetBossHealth() {
+	if (boss == nullptr) return 0;
+	return boss->GetHealth();
 }
