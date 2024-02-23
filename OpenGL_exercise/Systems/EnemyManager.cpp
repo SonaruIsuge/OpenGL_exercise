@@ -15,6 +15,7 @@ EnemyManager* EnemyManager::GetInstance() {
 EnemyManager::EnemyManager() {
 	player = nullptr;
 	deadEnemyCount = 0;
+	activeEnemyCount = 0;
 }
 
 
@@ -55,6 +56,7 @@ Enemy* EnemyManager::RequestEnemy(EnemyType type) {
 	Node<Enemy>* node = allTypeEnemies[type]->GetNode();
 	if (node == nullptr) return nullptr;
 
+	activeEnemyCount++;
 	return node->data;
 }
 
@@ -75,6 +77,7 @@ void EnemyManager::Update(float deltaTime) {
 				player->KillEnemy();
 			}
 			if (!currentNode->data->IsActive()) {
+				activeEnemyCount--;
 				pool.second->Recycle(currentNode);
 			}
 
@@ -93,4 +96,9 @@ void EnemyManager::Destroy() {
 
 int EnemyManager::GetKilledEnemyCount() {
 	return deadEnemyCount;
+}
+
+
+int EnemyManager::GetActiveEnemyCount() {
+	return activeEnemyCount;
 }

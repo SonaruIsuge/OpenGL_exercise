@@ -16,6 +16,7 @@ private:
 
 	std::map<EnemyType, std::unique_ptr<ObjectPool<Enemy>>> allTypeEnemies;
 
+	int activeEnemyCount;
 	int deadEnemyCount;
 	
 public:
@@ -33,6 +34,7 @@ public:
 	void Update(float deltaTime);
 	void Destroy();
 	int GetKilledEnemyCount();
+	int GetActiveEnemyCount();
 
 	template<IsEnemy T>
 	void AddEnemyTypeToPool(EnemyType type, T& prototype, int numInPool) {

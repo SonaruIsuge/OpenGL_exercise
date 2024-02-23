@@ -75,7 +75,7 @@ void LevelManager::Update(float deltaTime) {
 		wave3(deltaTime, 8, 4.0f);
 		break;
 	case 4:
-		BossFight(deltaTime, 3.0f);
+		BossFight(deltaTime, 2.0f);
 		break;
 	}
 	
@@ -141,6 +141,9 @@ void LevelManager::wave3(float dt, int enemyNum, float enemyInitCoolDown) {
 
 
 void LevelManager::BossFight(float dt, float breakTime) {
+	if (EnemyManager::GetInstance()->GetActiveEnemyCount() > 0)
+		return;
+	
 	if (coolDownTimer < breakTime) {
 		coolDownTimer += dt;
 		return;
