@@ -7,14 +7,16 @@ class Node {
 public:
 	T* data;
 	Node<T>* next;
-	Node(T* data, Node<T>* next);
+	Node<T>* previous;
+	Node(T* data, Node<T>* next, Node<T>* previous);
 };
 
 
 template <class T>
-Node<T>::Node(T* data, Node<T>* next) {
+Node<T>::Node(T* data, Node<T>* next, Node<T>* previous) {
 	this->data = data;
 	this->next = next;
+	this->previous = previous;
 }
 
 
@@ -61,7 +63,7 @@ ObjectPool<T>::~ObjectPool() {
 
 template <class T>
 void ObjectPool<T>::AddNode(T* data) {
-	Node<T>* node = new Node<T>(data, nullptr);
+	Node<T>* node = new Node<T>(data, nullptr, nullptr);
 
 
 	if (first == nullptr) {
@@ -71,6 +73,7 @@ void ObjectPool<T>::AddNode(T* data) {
 	}
 	else {
 		last->next = node;
+		node->previous = last;
 		last = last->next;
 		last->next = nullptr;
 	}
@@ -81,52 +84,81 @@ template <class T>
 Node<T>* ObjectPool<T>::GetNode() {
 	// get from unuse list
 	current = first;
-	if (current != nullptr) {
-		first = current->next;
-		if (current == last) last = nullptr;
-
-		// add to using list
-		current->next = using_first;
-		using_first = current;
-		return current;
-	}
-	else {
+	if (current == nullptr) 
 		return nullptr;
+
+	first = current->next;
+	if (current == last) last = nullptr;
+
+	// add to using list
+	if (using_first != nullptr) {
+		using_first->previous = current;
 	}
+	current->next = using_first;
+	current->previous = nullptr;
+	using_first = current;
+	return current;
 }
 
 
 template <class T>
 void ObjectPool<T>::Recycle(Node<T>* node) {
-	// if node is in using list, remove it from list
-	current = using_first;
-	Node<T>* previous = nullptr;
-	while (current != nullptr) {
-		if (current == node) {
-			if (current == using_first) {
-				using_first = current->next;
-				break;
-			}
-			else {
-				previous->next = current->next;
-				break;
-			}
-		}
-		else {
-			previous = current;
-			current = current->next;
-		}
+	if (node == nullptr || node->data == nullptr) {
+		return;
 	}
 
+	if (node->next != nullptr) {
+		node->next->previous = node->previous;
+	}
+
+	if (node->previous != nullptr) {
+		node->previous->next = node->next;
+	}
+	else {
+		// If the node was the first in the list
+		using_first = node->next;
+	}
+
+	// Add the node to the unuse list
 	if (last == nullptr) {
-		// no node in unuse list
 		first = last = node;
 	}
 	else {
 		last->next = node;
+		node->previous = last;
 		last = node;
 	}
-	last->next = nullptr;
+	node->next = nullptr;
+
+	//// if node is in using list, remove it from list
+	//current = using_first;
+	//Node<T>* previous = nullptr;
+	//while (current != nullptr) {
+	//	if (current == node) {
+	//		if (current == using_first) {
+	//			using_first = current->next;
+	//			break;
+	//		}
+	//		else {
+	//			previous->next = current->next;
+	//			break;
+	//		}
+	//	}
+	//	else {
+	//		previous = current;
+	//		current = current->next;
+	//	}
+	//}
+
+	//if (last == nullptr) {
+	//	// no node in unuse list
+	//	first = last = node;
+	//}
+	//else {
+	//	last->next = node;
+	//	last = node;
+	//}
+	//last->next = nullptr;
 }
 
 

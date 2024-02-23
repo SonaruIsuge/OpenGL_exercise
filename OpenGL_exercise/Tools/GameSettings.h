@@ -43,7 +43,7 @@ const glm::vec4 EXPERT_E_COLOR = glm::vec4(0.8f, 0.4f, 0.9f, 1.0f);
 
 // Boss
 const float BOSS_MOVESPEED = 4.0f;
-const int BOSS_HEALTH = 3000;
+const int BOSS_HEALTH = 5000;
 const int BOSS_DAMAGE = 2;
 const int BOSS_SHOOTINGPART = 28;
 const float BOSS_BULLET_COOLDOWN = 0.2f;
